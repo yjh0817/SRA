@@ -18,7 +18,7 @@ public class SRAMain {
 	
 	private void powerUp() {
 		// start!
-            //sssss
+		//sssss
 	}
 	
 	public static void main(String[] args) {
