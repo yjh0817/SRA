@@ -18,6 +18,7 @@ public class SRAMain {
 	
 	private void powerUp() {
 		// start!
+		// ASDF
 	}
 	
 	public static void main(String[] args) {
