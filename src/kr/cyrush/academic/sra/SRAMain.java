@@ -18,9 +18,6 @@ public class SRAMain {
 	
 	private void powerUp() {
 		// start!
-		// How to push to Git?
-		// Please show me 
-		// Test - J.H. Yun
 	}
 	
 	public static void main(String[] args) {
