@@ -1,6 +1,7 @@
 package com.cyrusian.academic.sra;
 
 //@ Classes
+import com.cyrusian.academic.sra.element.ChessPiece;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 //import java.util.logging.LogManager;
@@ -31,6 +32,7 @@ public class SRAMain {
 		} catch(Exception e) {
 			rootLevelLogger.log(Level.WARNING, i18n.getString("ApplyingSystemUIFailed"));
 		}
+		
 		
 		new SRAMain().powerUp();
 	}
