@@ -17,9 +17,9 @@ public class Internationalization {
 	private Internationalization(Locale loc) {
 		locSetting = loc;
 		try {
-			resBundle = ResourceBundle.getBundle("i18n", loc);
+			resBundle = ResourceBundle.getBundle("com.cyrusian.academic.sra.i18n.i18n", loc);
 		} catch(MissingResourceException mre) {
-			resBundle = ResourceBundle.getBundle("i18n", Locale.ENGLISH);
+			resBundle = ResourceBundle.getBundle("com.cyrusian.academic.sra.i18n.i18n", Locale.ENGLISH);
 		}
 	}
 	

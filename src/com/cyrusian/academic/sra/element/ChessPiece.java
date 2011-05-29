@@ -3,7 +3,7 @@ package com.cyrusian.academic.sra.element;
 
 public interface ChessPiece {
 	
-	// Constant for piece identification;
+	// Constants for piece identification
 	public static final short BISHOP = 0x01;
 	public static final short KING = 0x02;
 	public static final short KNIGHT = 0x03;
