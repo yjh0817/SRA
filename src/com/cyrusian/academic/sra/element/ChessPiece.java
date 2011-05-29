@@ -13,5 +13,19 @@ public interface ChessPiece {
 	
 	public short getPieceID();
 	public String getPieceName();
-
+/*
+	public enum ChessPieces implements Valuable {
+		Bishop(3), King(Short.MAX_VALUE), Knight(3), Pawn(1), Queen(9), Rook(5);
+		
+		private short value;
+		
+		ChessPieces(int value) {
+			this.value = (short)value;
+		}
+		
+		@Override
+		public short getValue() {
+			return this.value;
+		}
+	}*/
 }
