@@ -1,7 +1,7 @@
 package com.cyrusian.academic.sra;
 
 //@ Classes
-import com.cyrusian.academic.sra.element.ChessPiece;
+//import com.cyrusian.academic.sra.element.ChessPiece;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 //import java.util.logging.LogManager;
@@ -14,14 +14,11 @@ public class SRAMain {
 	private GUIManager mainWindow;
 	
 	private SRAMain() {
-		GUIManager gui = new GUIManager();
-		gui.go();
-		//mainWindow.setVisible(true);
-		//mainWindow.getReady();
+		mainWindow = new GUIManager();
 	}
 	
 	private void powerUp() {
-		// start!
+		mainWindow.setVisible(true);
 	}
 	
 	public static void main(String[] args) {

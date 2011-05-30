@@ -66,7 +66,6 @@ public class GUIManager extends JFrame {
 			playGround.add(theGrid[loopy]);
 		}
 		frame.add(playGround, BorderLayout.CENTER);
-		frame.setVisible(true);
   	}
 	
 }
