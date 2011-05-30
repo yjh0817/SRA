@@ -14,7 +14,8 @@ public class SRAMain {
 	private GUIManager mainWindow;
 	
 	private SRAMain() {
-		mainWindow = new GUIManager();
+		GUIManager gui = new GUIManager();
+		gui.go();
 		//mainWindow.setVisible(true);
 		//mainWindow.getReady();
 	}
