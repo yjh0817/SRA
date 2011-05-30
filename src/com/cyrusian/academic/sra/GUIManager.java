@@ -1,6 +1,5 @@
 package com.cyrusian.academic.sra;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -32,12 +31,11 @@ public class GUIManager extends JFrame {
 	}
 
 	public GUIManager() {
-		JFrame frame = new JFrame("SRA");
-		frame.setSize(640, 640); // why 900, 688?
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setResizable(false);
-		frame.setBackground(Color.BLACK);
-		frame.setLayout(new BorderLayout());
+		super("SRA");
+		setSize(640, 640); // why 900, 688?
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
+		setBackground(Color.BLACK);
 		
 		JPanel playGround = new JPanel();
 		playGround.setLayout(new GridLayout(8, 8));
@@ -65,7 +63,7 @@ public class GUIManager extends JFrame {
 			
 			playGround.add(theGrid[loopy]);
 		}
-		frame.add(playGround, BorderLayout.CENTER);
+		add(playGround);
   	}
 	
 }
