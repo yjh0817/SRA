@@ -12,13 +12,15 @@ import com.cyrusian.academic.sra.i18n.Internationalization;
 public class SRAMain {
 	
 	private GUIManager mainWindow;
+	private ChessEngine engietan;
 	
 	private SRAMain() {
 		mainWindow = new GUIManager();
-		//asdf.setVisible(true);
+		engietan = new ChessEngine();
 	}
 	
 	private void powerUp() {
+		engietan.runEngieRun();
 		mainWindow.setVisible(true);
 	}
 	
