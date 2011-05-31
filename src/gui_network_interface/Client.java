@@ -42,7 +42,7 @@ public class Client extends JFrame {
 			jta = new JTextArea();
 
 			panel.setLayout(new BorderLayout());
-			add(panel, BorderLayout.NORTH);
+			add(panel, BorderLayout.SOUTH);
 			add(new JScrollPane(jta), BorderLayout.CENTER);
 
 			jtf.addActionListener(new TextFieldListener());

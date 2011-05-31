@@ -44,7 +44,7 @@ public class server extends JFrame {
 		}
 		
 		panel.setLayout(new BorderLayout());
-		add(panel, BorderLayout.NORTH);
+		add(panel, BorderLayout.SOUTH);
 		add(new JScrollPane(jta), BorderLayout.CENTER);
 
 		jtf.addActionListener(new TextFieldListener());
