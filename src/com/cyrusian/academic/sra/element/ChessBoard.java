@@ -9,6 +9,10 @@ public class ChessBoard {
 		theGrid = aGrid.clone();
 	}
 	
+	public ChessPiece getPieceAtCoord(int coord) {
+		return getPieceAtCoord(new Coordinate(coord));
+	}
+	
 	public ChessPiece getPieceAtCoord(Coordinate coord) {
 		if(ChessPiece.Handyman.isInBound(coord)==true)
 			return theGrid[coord.getCoordinate()];

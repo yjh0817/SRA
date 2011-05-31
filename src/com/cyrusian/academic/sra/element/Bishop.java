@@ -3,9 +3,11 @@ package com.cyrusian.academic.sra.element;
 import java.util.HashSet;
 
 
-public class Bishop implements ChessPiece, Valuable {
+public class Bishop extends Piece {
 	
-	private ChessPiece.PieceColor color;
+	public Bishop(ChessPiece.Color c) {
+		color = c;
+	}
 	
 	@Override
 	public Coordinate[] getAllAvailableMoves(ChessBoard aBoard, Coordinate where) {
@@ -15,9 +17,9 @@ public class Bishop implements ChessPiece, Valuable {
 		do {
 			tmpCrd.moveNorth().moveWest();
 			if(ChessPiece.Handyman.isInBound(tmpCrd) == true) {
-				if(aBoard.getPieceAtCoord(tmpCrd).getPieceID() == ChessPiece.PieceID.NONE)
+				if(aBoard.getPieceAtCoord(tmpCrd).getPieceID() == ChessPiece.Identifier.NONE)
 					moves.add(tmpCrd.clone());
-				else if(aBoard.getPieceAtCoord(tmpCrd).getPieceColor() != color) {
+				else if(aBoard.getPieceAtCoord(tmpCrd).getColor() != color) {
 					moves.add(tmpCrd.clone());
 					break;
 				}
@@ -29,9 +31,9 @@ public class Bishop implements ChessPiece, Valuable {
 		do {
 			tmpCrd.moveWest().moveSouth();
 			if(ChessPiece.Handyman.isInBound(tmpCrd) == true) {
-				if(aBoard.getPieceAtCoord(tmpCrd).getPieceID() == ChessPiece.PieceID.NONE)
+				if(aBoard.getPieceAtCoord(tmpCrd).getPieceID() == ChessPiece.Identifier.NONE)
 					moves.add(tmpCrd.clone());
-				else if(aBoard.getPieceAtCoord(tmpCrd).getPieceColor() != color) {
+				else if(aBoard.getPieceAtCoord(tmpCrd).getColor() != color) {
 					moves.add(tmpCrd.clone());
 					break;
 				}
@@ -43,9 +45,9 @@ public class Bishop implements ChessPiece, Valuable {
 		do {
 			tmpCrd.moveSouth().moveEast();
 			if(ChessPiece.Handyman.isInBound(tmpCrd) == true) {
-				if(aBoard.getPieceAtCoord(tmpCrd).getPieceID() == ChessPiece.PieceID.NONE)
+				if(aBoard.getPieceAtCoord(tmpCrd).getPieceID() == ChessPiece.Identifier.NONE)
 					moves.add(tmpCrd.clone());
-				else if(aBoard.getPieceAtCoord(tmpCrd).getPieceColor() != color) {
+				else if(aBoard.getPieceAtCoord(tmpCrd).getColor() != color) {
 					moves.add(tmpCrd.clone());
 					break;
 				}
@@ -57,9 +59,9 @@ public class Bishop implements ChessPiece, Valuable {
 		do {
 			tmpCrd.moveEast().moveNorth();
 			if(ChessPiece.Handyman.isInBound(tmpCrd) == true) {
-				if(aBoard.getPieceAtCoord(tmpCrd).getPieceID() == ChessPiece.PieceID.NONE)
+				if(aBoard.getPieceAtCoord(tmpCrd).getPieceID() == ChessPiece.Identifier.NONE)
 					moves.add(tmpCrd.clone());
-				else if(aBoard.getPieceAtCoord(tmpCrd).getPieceColor() != color) {
+				else if(aBoard.getPieceAtCoord(tmpCrd).getColor() != color) {
 					moves.add(tmpCrd.clone());
 					break;
 				}
@@ -76,13 +78,8 @@ public class Bishop implements ChessPiece, Valuable {
 	}
 	
 	@Override
-	public PieceColor getPieceColor() {
-		return color;
-	}
-	
-	@Override
-	public ChessPiece.PieceID getPieceID() {
-		return ChessPiece.PieceID.BISHOP;
+	public ChessPiece.Identifier getPieceID() {
+		return ChessPiece.Identifier.BISHOP;
 	}
 	
 	@Override

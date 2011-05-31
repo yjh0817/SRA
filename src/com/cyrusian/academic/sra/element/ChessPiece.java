@@ -4,8 +4,9 @@ package com.cyrusian.academic.sra.element;
 public interface ChessPiece {
 	
 	public Coordinate[] getAllAvailableMoves(ChessBoard aBoard, Coordinate where); // Note: this method does not deal with Check. At least now.
-	public PieceColor getPieceColor();
-	public PieceID getPieceID();
+	public Color getColor();
+	public Color getOppositeColor();
+	public Identifier getPieceID();
 	
 	public class Handyman {
 		
@@ -26,11 +27,23 @@ public interface ChessPiece {
 		
 	}
 	
-	public enum PieceColor {
-		WHITE, BLACK;
+	public enum Color {
+		NONE, WHITE, BLACK;
+		
+		@Override
+		public String toString() {
+			switch(this) {
+				case WHITE:
+					return "White";
+				case BLACK:
+					return "Black";
+				default:
+					return "";
+			}
+		}
 	}
 	
-	public enum PieceID {
+	public enum Identifier {
 		NONE, PAWN, BISHOP, KNIGHT, ROOK, QUEEN, KING;
 	}
 	

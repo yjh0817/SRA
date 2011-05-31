@@ -9,19 +9,23 @@ import javax.swing.UIManager;
 import com.cyrusian.academic.sra.i18n.Internationalization;
 
 
-public class SRAMain {
+public final class SRAMain {
 	
 	private GUIManager mainWindow;
 	private ChessEngine engietan;
 	
 	private SRAMain() {
-		mainWindow = new GUIManager();
-		engietan = new ChessEngine();
+		mainWindow = new GUIManager(this);
+		engietan = new ChessEngine(mainWindow);
 	}
 	
 	private void powerUp() {
 		//engietan.runEngieRun();
 		mainWindow.setVisible(true);
+	}
+	
+	public ChessEngine getEngine() {
+		return engietan;
 	}
 	
 	public static void main(String[] args) {
