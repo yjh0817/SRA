@@ -114,10 +114,15 @@ public class GUIManager extends JFrame {
 		
 		theGrid = new JButton[64];
 		for(int loopy = 0; loopy < 64; ++loopy) {
-			if(((loopy - (loopy % 8)) / 8) % 2 == 0)
+			if(((loopy - (loopy % 8)) / 8) % 2 == 0) {
 				theGrid[loopy] = new JButton();//boardTiles[loopy % 2]);
-			else
+				// 이 부분은 1~8번째 "줄" 중 1, 3, 5, 7번째 줄 담당.
+				// 여기 컬러 먹이는 코드 작성
+			} else {
 				theGrid[loopy] = new JButton();//boardTiles[(loopy + 1) % 2]);
+				// 이 부분은 1~8번째 "줄" 중 2, 4, 6, 8번째 줄 담당.
+				// 여기 컬러 먹이는 코드 작성
+			}
 			theGrid[loopy].addActionListener(new MoveListener(loopy));
 			theGrid[loopy].setRolloverEnabled(false);
 			//theGrid[loopy].setBorderPainted(false);
