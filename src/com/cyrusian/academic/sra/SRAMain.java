@@ -16,7 +16,7 @@ public class SRAMain {
 	
 	private SRAMain() {
 		mainWindow = new GUIManager();
-		//engietan = new ChessEngine();
+		engietan = new ChessEngine();
 	}
 	
 	private void powerUp() {

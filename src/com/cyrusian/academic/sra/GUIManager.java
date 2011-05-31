@@ -1,11 +1,20 @@
 package com.cyrusian.academic.sra;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.net.URL;
-import javax.swing.*;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JRadioButtonMenuItem;
 
 
 public class GUIManager extends JFrame {
@@ -45,16 +54,23 @@ public class GUIManager extends JFrame {
 		menuGame.add(miExit);
 		
 		JMenu menuDiff=new JMenu("Difficulty");
+		ButtonGroup diffGroup = new ButtonGroup();
 		menuDiff.setMnemonic(KeyEvent.VK_D);
 		menuBar.add(menuDiff);
-		JMenuItem miDiffBasic=new JMenuItem("Basic");
+		JRadioButtonMenuItem miDiffBasic=new JRadioButtonMenuItem("Basic");
 		miDiffBasic.setMnemonic(KeyEvent.VK_B);
+		miDiffBasic.addActionListener(new MenuListener(MenuType.DIFF_BAS));
+		diffGroup.add(miDiffBasic);
 		menuDiff.add(miDiffBasic);
-		JMenuItem miDiffAdvanced=new JMenuItem("Advanced");
+		JRadioButtonMenuItem miDiffAdvanced=new JRadioButtonMenuItem("Advanced");
 		miDiffAdvanced.setMnemonic(KeyEvent.VK_A);
+		miDiffAdvanced.addActionListener(new MenuListener(MenuType.DIFF_ADV));
+		diffGroup.add(miDiffAdvanced);
 		menuDiff.add(miDiffAdvanced);
-		JMenuItem miDiffExtreme=new JMenuItem("Extreme");
+		JRadioButtonMenuItem miDiffExtreme=new JRadioButtonMenuItem("Extreme");
 		miDiffExtreme.setMnemonic(KeyEvent.VK_E);
+		miDiffExtreme.addActionListener(new MenuListener(MenuType.DIFF_EXT));
+		diffGroup.add(miDiffExtreme);
 		menuDiff.add(miDiffExtreme);
 		
 		setJMenuBar(menuBar);
@@ -118,13 +134,30 @@ public class GUIManager extends JFrame {
 		
 		@Override
 		public void actionPerformed(ActionEvent ae){
-			//
+			switch(menuType) {
+				case NEW_SINGLE:
+					break;
+				case NEW_MULTI:
+					break;
+				case CURRENT_GIVEUP:
+					break;
+				case EXIT_GAME:
+					System.exit(0);
+					break;
+				case DIFF_BAS:
+					break;
+				case DIFF_ADV:
+					break;
+				case DIFF_EXT:
+					break;
+				
+			}
 		}
 		
 	}
 	
 	public enum MenuType {
-		NEW_SINGLE, NEW_MULTI, CURRENT_GIVEUP, EXIT_GAME, DIF_BASIC, DIF_ADV, DIF_EXT;
+		NEW_SINGLE, NEW_MULTI, CURRENT_GIVEUP, EXIT_GAME, DIFF_BAS, DIFF_ADV, DIFF_EXT;
 	}
 	
 }
