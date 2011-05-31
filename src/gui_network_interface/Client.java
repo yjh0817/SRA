@@ -36,11 +36,11 @@ public class Client {
 		}
 	}
 	
-	public int communicate_server(int x1,int y1,int x2,int y2){
+	public int communicate_server(int before,int after){
 		int input=0;
 		
 		try{//seding coordinates
-			toServer.writeInt(x1*1000+y1*100+x2*10+y2);
+			toServer.writeInt(before*100+after);
 		}catch(IOException ex){
 			JOptionPane.showMessageDialog(null,ex.toString());
 		}

@@ -36,11 +36,11 @@ public class server {
 		}
 	}
 	
-	public int communicate_client(int x1,int y1,int x2,int y2){
+	public int communicate_client(int before,int after){
 		int input=0;
 		
 		try{
-			dos.writeInt(x1*1000+y1*100+x2*10+y2);
+			dos.writeInt(before*100+after);
 		}catch(IOException ex){		
 			JOptionPane.showMessageDialog(null, ex.toString());
 		}
