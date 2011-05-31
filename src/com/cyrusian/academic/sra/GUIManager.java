@@ -3,6 +3,7 @@ package com.cyrusian.academic.sra;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.net.URL;
 import javax.swing.*;
 
@@ -11,64 +12,55 @@ public class GUIManager extends JFrame {
 	
 	private JButton[] theGrid;
 	
-	private class MoveListener implements ActionListener {
-		
-		private int coord;
-		
-		public MoveListener(int crd) {
-			coord = crd;
-		}
-		
-		@Override
-		public void actionPerformed(ActionEvent ae) {
-			System.out.println(coord);
-		}
-		
-	}
-	
-//***************** ActionListener of MenuBar *****************
-	private class exitaction implements ActionListener {
-		public void actionPerformed (ActionEvent e){
-			System.exit(0);
-		}
-	}
-//**************************************************************
 	public GUIManager() {
 		super("SRA");
 		setSize(640, 640); // why 900, 688?
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setBackground(Color.BLACK);
-		setVisible(true);
 		
-//***************** Menu Bar *********************
 		
-		JMenuBar menubar = new JMenuBar();
-		this.setJMenuBar(menubar);
+		JMenuBar menuBar = new JMenuBar();
+		
+		JMenu menuGame = new JMenu("Game");
+		menuGame.setMnemonic(KeyEvent.VK_G);
+		menuBar.add(menuGame);
+		JMenuItem miNewSingle = new JMenuItem("New Singleplayer");
+		miNewSingle.setMnemonic(KeyEvent.VK_S);
+		miNewSingle.addActionListener(new MenuListener(MenuType.NEW_SINGLE));
+		menuGame.add(miNewSingle);
+		JMenuItem miNewMulti = new JMenuItem("New Multiplayer");
+		miNewMulti.setMnemonic(KeyEvent.VK_M);
+		miNewMulti.addActionListener(new MenuListener(MenuType.NEW_MULTI));
+		menuGame.add(miNewMulti);
+		menuGame.addSeparator();
+		JMenuItem miGiveUp = new JMenuItem("Give Up");
+		miGiveUp.setMnemonic(KeyEvent.VK_U);
+		miGiveUp.addActionListener(new MenuListener(MenuType.CURRENT_GIVEUP));
+		menuGame.add(miGiveUp);
+		menuGame.addSeparator();
+		JMenuItem miExit = new JMenuItem("Exit");
+		miExit.setMnemonic(KeyEvent.VK_X);
+		miExit.addActionListener(new MenuListener(MenuType.EXIT_GAME));
+		menuGame.add(miExit);
+		
+		JMenu menuDiff=new JMenu("Difficulty");
+		menuDiff.setMnemonic(KeyEvent.VK_D);
+		menuBar.add(menuDiff);
+		JMenuItem miDiffBasic=new JMenuItem("Basic");
+		miDiffBasic.setMnemonic(KeyEvent.VK_B);
+		menuDiff.add(miDiffBasic);
+		JMenuItem miDiffAdvanced=new JMenuItem("Advanced");
+		miDiffAdvanced.setMnemonic(KeyEvent.VK_A);
+		menuDiff.add(miDiffAdvanced);
+		JMenuItem miDiffExtreme=new JMenuItem("Extreme");
+		miDiffExtreme.setMnemonic(KeyEvent.VK_E);
+		menuDiff.add(miDiffExtreme);
+		
+		setJMenuBar(menuBar);
+		
 
-		JMenu nMenu = new JMenu("Menu");
-		menubar.add(nMenu);
-		JMenuItem nMenu_com = new JMenuItem("New game (compuger)");
-		JMenuItem nMenu_player = new JMenuItem("New game (player)");
-		JMenuItem nMenu_giveup = new JMenuItem("Give up!!");
-		JMenuItem nMenu_exit = new JMenuItem("Exit");
-		nMenu.add(nMenu_com);
-		nMenu.add(nMenu_player);
-		nMenu.add(nMenu_giveup);
-		nMenu.add(nMenu_exit);
 		
-		JMenu difMenu=new JMenu("Difficulty");
-		menubar.add(difMenu);
-		JMenuItem dif_easy=new JMenuItem("Easy");
-		JMenuItem dif_mid=new JMenuItem("Middle");
-		JMenuItem dif_hard=new JMenuItem("Hard");
-		difMenu.add(dif_easy);
-		difMenu.add(dif_mid);
-		difMenu.add(dif_hard);
-		
-		nMenu_exit.addActionListener(new exitaction());
-		
-//****************** Game Board *******************
 		JPanel playGround = new JPanel();
 		playGround.setLayout(new GridLayout(8, 8));
 		
@@ -96,6 +88,43 @@ public class GUIManager extends JFrame {
 			playGround.add(theGrid[loopy]);
 		}
 		add(playGround);
+		pack(); // to calculate menuBar's height. NEVER USE pack() AGAIN AFTER THIS POINT!
+		this.setSize(640, 640 + menuBar.getHeight());
+		
   	}
+	
+	private class MoveListener implements ActionListener {
+		
+		private int coord;
+		
+		public MoveListener(int crd) {
+			coord = crd;
+		}
+		
+		@Override
+		public void actionPerformed(ActionEvent ae) {
+			System.out.println(coord);
+		}
+		
+	}
+	
+	private class MenuListener implements ActionListener {
+		
+		private MenuType menuType;
+		
+		public MenuListener(MenuType type) {
+			menuType = type;
+		}
+		
+		@Override
+		public void actionPerformed(ActionEvent ae){
+			//
+		}
+		
+	}
+	
+	public enum MenuType {
+		NEW_SINGLE, NEW_MULTI, CURRENT_GIVEUP, EXIT_GAME, DIF_BASIC, DIF_ADV, DIF_EXT;
+	}
 	
 }
