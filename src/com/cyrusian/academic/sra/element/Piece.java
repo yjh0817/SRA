@@ -1,7 +1,7 @@
 package com.cyrusian.academic.sra.element;
 
 
-public abstract class Piece implements ChessPiece, Valuable {
+public abstract class Piece implements ChessPiece {
 	
 	protected ChessPiece.Color color;
 	

@@ -16,11 +16,10 @@ public final class SRAMain {
 	
 	private SRAMain() {
 		mainWindow = new GUIManager(this);
-		engietan = new ChessEngine(mainWindow);
+		engietan = new ChessEngine(mainWindow, ChessEngine.Difficulty.ADVANCED);
 	}
 	
 	private void powerUp() {
-		//engietan.runEngieRun();
 		mainWindow.setVisible(true);
 	}
 	

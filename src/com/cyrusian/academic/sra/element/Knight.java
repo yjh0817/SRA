@@ -13,17 +13,24 @@ public class Knight extends Piece {
 	public Coordinate[] getAllAvailableMoves(ChessBoard aBoard, Coordinate where) {
 		HashSet<Coordinate> moves = new HashSet<Coordinate>();
 		
-		Coordinate tmpCrd = where.clone();
-		moves.add(ChessPiece.Handyman.isInBound(tmpCrd.moveNorth().moveNorth().moveEast()) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
-		moves.add(ChessPiece.Handyman.isInBound(tmpCrd.moveEast().moveSouth()) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
-		moves.add(ChessPiece.Handyman.isInBound(tmpCrd.moveSouth().moveSouth()) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
-		moves.add(ChessPiece.Handyman.isInBound(tmpCrd.moveSouth().moveWest()) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
-		moves.add(ChessPiece.Handyman.isInBound(tmpCrd.moveWest().moveWest()) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
-		moves.add(ChessPiece.Handyman.isInBound(tmpCrd.moveWest().moveNorth()) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
-		moves.add(ChessPiece.Handyman.isInBound(tmpCrd.moveNorth().moveNorth()) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
-		moves.add(ChessPiece.Handyman.isInBound(tmpCrd.moveNorth().moveEast()) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
+		Coordinate tmpCrd = where.clone().moveNorth().moveNorth().moveWest();
+		moves.add(ChessPiece.Handyman.isInBound(tmpCrd) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
+		tmpCrd.moveEast().moveEast();
+		moves.add(ChessPiece.Handyman.isInBound(tmpCrd) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
+		tmpCrd.moveEast().moveSouth();
+		moves.add(ChessPiece.Handyman.isInBound(tmpCrd) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
+		tmpCrd.moveSouth().moveSouth();
+		moves.add(ChessPiece.Handyman.isInBound(tmpCrd) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
+		tmpCrd.moveSouth().moveWest();
+		moves.add(ChessPiece.Handyman.isInBound(tmpCrd) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
+		tmpCrd.moveWest().moveWest();
+		moves.add(ChessPiece.Handyman.isInBound(tmpCrd) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
+		tmpCrd.moveWest().moveNorth();
+		moves.add(ChessPiece.Handyman.isInBound(tmpCrd) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
+		tmpCrd.moveNorth().moveNorth();
+		moves.add(ChessPiece.Handyman.isInBound(tmpCrd) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
 		moves.remove(null);
-
+		
 		Coordinate[] crdSet = new Coordinate[moves.size()];
 		moves.toArray(crdSet);
 		tmpCrd = null;
@@ -38,7 +45,7 @@ public class Knight extends Piece {
 	}
 	
 	@Override
-	public short getValue() {
+	public int getValue() {
 		return 3;
 	}
 	

@@ -5,7 +5,6 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.net.URL;
 import java.util.HashMap;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -48,7 +47,7 @@ public class GUIManager extends JFrame {
 		miNewSingle.setMnemonic(KeyEvent.VK_S);
 		miNewSingle.addActionListener(new MenuListener(MenuType.NEW_SINGLE));
 		menuGame.add(miNewSingle);
-		JMenuItem miNewMulti = new JMenuItem(i18n.getString("MenuGameNewMulti"));
+		/*JMenuItem miNewMulti = new JMenuItem(i18n.getString("MenuGameNewMulti"));
 		miNewMulti.setMnemonic(KeyEvent.VK_M);
 		miNewMulti.addActionListener(new MenuListener(MenuType.NEW_MULTI));
 		miNewMulti.setEnabled(false); // not now.
@@ -57,7 +56,7 @@ public class GUIManager extends JFrame {
 		miJoinMulti.setMnemonic(KeyEvent.VK_J);
 		miJoinMulti.addActionListener(new MenuListener(MenuType.NEW_JOIN));
 		miJoinMulti.setEnabled(false); // not now.
-		menuGame.add(miJoinMulti);
+		menuGame.add(miJoinMulti);*/
 		menuGame.addSeparator();
 		JMenuItem miGiveUp = new JMenuItem(i18n.getString("MenuGameGiveUp"));
 		miGiveUp.setMnemonic(KeyEvent.VK_U);
@@ -115,11 +114,11 @@ public class GUIManager extends JFrame {
 		theGrid = new JButton[64];
 		for(int loopy = 0; loopy < 64; ++loopy) {
 			if(((loopy - (loopy % 8)) / 8) % 2 == 0) {
-				theGrid[loopy] = new JButton();//boardTiles[loopy % 2]);
+				theGrid[loopy] = new JButton(Integer.toString(loopy));//boardTiles[loopy % 2]);
 				// 이 부분은 1~8번째 "줄" 중 1, 3, 5, 7번째 줄 담당.
 				// 여기 컬러 먹이는 코드 작성
 			} else {
-				theGrid[loopy] = new JButton();//boardTiles[(loopy + 1) % 2]);
+				theGrid[loopy] = new JButton(Integer.toString(loopy));//boardTiles[(loopy + 1) % 2]);
 				// 이 부분은 1~8번째 "줄" 중 2, 4, 6, 8번째 줄 담당.
 				// 여기 컬러 먹이는 코드 작성
 			}
@@ -154,7 +153,7 @@ public class GUIManager extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent ae) {
 			if(selected == -1)
-				selected = coord;
+				selected = delegate.getEngine().isValid(coord) ? coord : -1;
 			else {
 				delegate.getEngine().runEngieRun(selected, coord);
 				selected = -1;

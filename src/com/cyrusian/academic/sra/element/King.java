@@ -13,15 +13,22 @@ public class King extends Piece {
 	public Coordinate[] getAllAvailableMoves(ChessBoard aBoard, Coordinate where) {
 		HashSet<Coordinate> moves = new HashSet<Coordinate>();
 		
-		Coordinate tmpCrd = where.clone();
-		moves.add(ChessPiece.Handyman.isInBound(tmpCrd.moveNorth()) == true && aBoard.getPieceAtCoord(tmpCrd).getOppositeColor() == color ? tmpCrd.clone() : null);
-		moves.add(ChessPiece.Handyman.isInBound(tmpCrd.moveEast()) == true && aBoard.getPieceAtCoord(tmpCrd).getOppositeColor() == color ? tmpCrd.clone() : null);
-		moves.add(ChessPiece.Handyman.isInBound(tmpCrd.moveSouth()) == true && aBoard.getPieceAtCoord(tmpCrd).getOppositeColor() == color ? tmpCrd.clone() : null);
-		moves.add(ChessPiece.Handyman.isInBound(tmpCrd.moveSouth()) == true && aBoard.getPieceAtCoord(tmpCrd).getOppositeColor() == color ? tmpCrd.clone() : null);
-		moves.add(ChessPiece.Handyman.isInBound(tmpCrd.moveWest()) == true && aBoard.getPieceAtCoord(tmpCrd).getOppositeColor() == color ? tmpCrd.clone() : null);
-		moves.add(ChessPiece.Handyman.isInBound(tmpCrd.moveWest()) == true && aBoard.getPieceAtCoord(tmpCrd).getOppositeColor() == color ? tmpCrd.clone() : null);
-		moves.add(ChessPiece.Handyman.isInBound(tmpCrd.moveNorth()) == true && aBoard.getPieceAtCoord(tmpCrd).getOppositeColor() == color ? tmpCrd.clone() : null);
-		moves.add(ChessPiece.Handyman.isInBound(tmpCrd.moveNorth()) == true && aBoard.getPieceAtCoord(tmpCrd).getOppositeColor() == color ? tmpCrd.clone() : null);
+		Coordinate tmpCrd = where.clone().moveNorth();
+		moves.add(ChessPiece.Handyman.isInBound(tmpCrd) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
+		tmpCrd.moveEast();
+		moves.add(ChessPiece.Handyman.isInBound(tmpCrd) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
+		tmpCrd.moveSouth();
+		moves.add(ChessPiece.Handyman.isInBound(tmpCrd) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
+		tmpCrd.moveSouth();
+		moves.add(ChessPiece.Handyman.isInBound(tmpCrd) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
+		tmpCrd.moveWest();
+		moves.add(ChessPiece.Handyman.isInBound(tmpCrd) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
+		tmpCrd.moveWest();
+		moves.add(ChessPiece.Handyman.isInBound(tmpCrd) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
+		tmpCrd.moveNorth();
+		moves.add(ChessPiece.Handyman.isInBound(tmpCrd) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
+		tmpCrd.moveNorth();
+		moves.add(ChessPiece.Handyman.isInBound(tmpCrd) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
 		moves.remove(null);
 		
 		Coordinate[] crdSet = new Coordinate[moves.size()];
@@ -38,8 +45,8 @@ public class King extends Piece {
 	}
 	
 	@Override
-	public short getValue() {
-		return Short.MAX_VALUE;
+	public int getValue() {
+		return Integer.MAX_VALUE;
 	}
 	
 	@Override

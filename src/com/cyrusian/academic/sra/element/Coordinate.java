@@ -5,7 +5,7 @@ public class Coordinate implements Cloneable {
 	
 	private static final int MOVE_EAST = +1;
 	private static final int MOVE_NORTH = -8;
-	private static final int MOVE_SOUTH = -8;
+	private static final int MOVE_SOUTH = +8;
 	private static final int MOVE_WEST = -1;
 	
 	private int coord;

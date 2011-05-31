@@ -7,6 +7,7 @@ public interface ChessPiece {
 	public Color getColor();
 	public Color getOppositeColor();
 	public Identifier getPieceID();
+	public int getValue();
 	
 	public class Handyman {
 		

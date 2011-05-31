@@ -1,7 +1,7 @@
 package com.cyrusian.academic.sra.element;
 
 
-public class ChessBoard {
+public class ChessBoard implements Cloneable {
 	
 	private ChessPiece[] theGrid;
 	
@@ -9,15 +9,25 @@ public class ChessBoard {
 		theGrid = aGrid.clone();
 	}
 	
+	@Override
+	public ChessBoard clone() {
+		return new ChessBoard(theGrid.clone());
+	}
+	
 	public ChessPiece getPieceAtCoord(int coord) {
-		return getPieceAtCoord(new Coordinate(coord));
+		if(ChessPiece.Handyman.isInBound(coord)==true)
+			return theGrid[coord];
+		
+		return null;
 	}
 	
 	public ChessPiece getPieceAtCoord(Coordinate coord) {
-		if(ChessPiece.Handyman.isInBound(coord)==true)
-			return theGrid[coord.getCoordinate()];
-		
-		return null;
+		return getPieceAtCoord(coord.getCoordinate());
+	}
+	
+	public void setPieceAtCoord(int where, ChessPiece newPiece) {
+		if(ChessPiece.Handyman.isInBound(where)==true)
+			theGrid[where]=newPiece;
 	}
 	
 }

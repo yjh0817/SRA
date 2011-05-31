@@ -19,10 +19,11 @@ public class Queen extends Piece {
 			if(ChessPiece.Handyman.isInBound(tmpCrd) == true) {
 				if(aBoard.getPieceAtCoord(tmpCrd).getPieceID() == ChessPiece.Identifier.NONE)
 					moves.add(tmpCrd.clone());
-				else if(aBoard.getPieceAtCoord(tmpCrd).getColor() != color) {
+				else if(aBoard.getPieceAtCoord(tmpCrd).getOppositeColor() == color) {
 					moves.add(tmpCrd.clone());
 					break;
-				}
+				} else if(aBoard.getPieceAtCoord(tmpCrd).getColor() == color)
+					break;
 			} else
 				break;
 		} while(true);
@@ -33,10 +34,11 @@ public class Queen extends Piece {
 			if(ChessPiece.Handyman.isInBound(tmpCrd) == true) {
 				if(aBoard.getPieceAtCoord(tmpCrd).getPieceID() == ChessPiece.Identifier.NONE)
 					moves.add(tmpCrd.clone());
-				else if(aBoard.getPieceAtCoord(tmpCrd).getColor() != color) {
+				else if(aBoard.getPieceAtCoord(tmpCrd).getOppositeColor() == color) {
 					moves.add(tmpCrd.clone());
 					break;
-				}
+				} else if(aBoard.getPieceAtCoord(tmpCrd).getColor() == color)
+					break;
 			} else
 				break;
 		} while(true);
@@ -47,10 +49,11 @@ public class Queen extends Piece {
 			if(ChessPiece.Handyman.isInBound(tmpCrd) == true) {
 				if(aBoard.getPieceAtCoord(tmpCrd).getPieceID() == ChessPiece.Identifier.NONE)
 					moves.add(tmpCrd.clone());
-				else if(aBoard.getPieceAtCoord(tmpCrd).getColor() != color) {
+				else if(aBoard.getPieceAtCoord(tmpCrd).getOppositeColor() == color) {
 					moves.add(tmpCrd.clone());
 					break;
-				}
+				} else if(aBoard.getPieceAtCoord(tmpCrd).getColor() == color)
+					break;
 			} else
 				break;
 		} while(true);
@@ -61,10 +64,11 @@ public class Queen extends Piece {
 			if(ChessPiece.Handyman.isInBound(tmpCrd) == true) {
 				if(aBoard.getPieceAtCoord(tmpCrd).getPieceID() == ChessPiece.Identifier.NONE)
 					moves.add(tmpCrd.clone());
-				else if(aBoard.getPieceAtCoord(tmpCrd).getColor() != color) {
+				else if(aBoard.getPieceAtCoord(tmpCrd).getOppositeColor() == color) {
 					moves.add(tmpCrd.clone());
 					break;
-				}
+				} else if(aBoard.getPieceAtCoord(tmpCrd).getColor() == color)
+					break;
 			} else
 				break;
 		} while(true);
@@ -74,10 +78,11 @@ public class Queen extends Piece {
 			if(ChessPiece.Handyman.isInBound(tmpCrd) == true) {
 				if(aBoard.getPieceAtCoord(tmpCrd).getPieceID() == ChessPiece.Identifier.NONE)
 					moves.add(tmpCrd.clone());
-				else if(aBoard.getPieceAtCoord(tmpCrd).getColor() != color) {
+				else if(aBoard.getPieceAtCoord(tmpCrd).getOppositeColor() == color) {
 					moves.add(tmpCrd.clone());
 					break;
-				}
+				} else if(aBoard.getPieceAtCoord(tmpCrd).getColor() == color)
+					break;
 			} else
 				break;
 		} while(true);
@@ -88,10 +93,11 @@ public class Queen extends Piece {
 			if(ChessPiece.Handyman.isInBound(tmpCrd) == true) {
 				if(aBoard.getPieceAtCoord(tmpCrd).getPieceID() == ChessPiece.Identifier.NONE)
 					moves.add(tmpCrd.clone());
-				else if(aBoard.getPieceAtCoord(tmpCrd).getColor() != color) {
+				else if(aBoard.getPieceAtCoord(tmpCrd).getOppositeColor() == color) {
 					moves.add(tmpCrd.clone());
 					break;
-				}
+				} else if(aBoard.getPieceAtCoord(tmpCrd).getColor() == color)
+					break;
 			} else
 				break;
 		} while(true);
@@ -102,10 +108,11 @@ public class Queen extends Piece {
 			if(ChessPiece.Handyman.isInBound(tmpCrd) == true) {
 				if(aBoard.getPieceAtCoord(tmpCrd).getPieceID() == ChessPiece.Identifier.NONE)
 					moves.add(tmpCrd.clone());
-				else if(aBoard.getPieceAtCoord(tmpCrd).getColor() != color) {
+				else if(aBoard.getPieceAtCoord(tmpCrd).getOppositeColor() == color) {
 					moves.add(tmpCrd.clone());
 					break;
-				}
+				} else if(aBoard.getPieceAtCoord(tmpCrd).getColor() == color)
+					break;
 			} else
 				break;
 		} while(true);
@@ -116,10 +123,11 @@ public class Queen extends Piece {
 			if(ChessPiece.Handyman.isInBound(tmpCrd) == true) {
 				if(aBoard.getPieceAtCoord(tmpCrd).getPieceID() == ChessPiece.Identifier.NONE)
 					moves.add(tmpCrd.clone());
-				else if(aBoard.getPieceAtCoord(tmpCrd).getColor() != color) {
+				else if(aBoard.getPieceAtCoord(tmpCrd).getOppositeColor() == color) {
 					moves.add(tmpCrd.clone());
 					break;
-				}
+				} else if(aBoard.getPieceAtCoord(tmpCrd).getColor() == color)
+					break;
 			} else
 				break;
 		} while(true);
@@ -138,7 +146,7 @@ public class Queen extends Piece {
 	}
 	
 	@Override
-	public short getValue() {
+	public int getValue() {
 		return 9;
 	}
 	

@@ -1,7 +1,7 @@
 package com.cyrusian.academic.sra.element;
 
 
-public class NullPiece implements ChessPiece, Valuable {
+public class NullPiece implements ChessPiece {
 	
 	@Override
 	public Coordinate[] getAllAvailableMoves(ChessBoard aBoard, Coordinate where) {
@@ -24,7 +24,7 @@ public class NullPiece implements ChessPiece, Valuable {
 	}
 	
 	@Override
-	public short getValue() {
+	public int getValue() {
 		return 0;
 	}
 	
