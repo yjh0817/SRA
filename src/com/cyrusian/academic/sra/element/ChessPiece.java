@@ -3,7 +3,8 @@ package com.cyrusian.academic.sra.element;
 
 public interface ChessPiece {
 	
-	public Coordinate[] getAllAvailableMoves(ChessBoard aBoard, Coordinate where);
+	public Coordinate[] getAllAvailableMoves(ChessBoard aBoard, Coordinate where); // Note: this method does not deal with Check. At least now.
+	public PieceColor getPieceColor();
 	public PieceID getPieceID();
 	
 	public class Handyman {
@@ -19,6 +20,14 @@ public interface ChessPiece {
 			return false;
 		}
 		
+		public static boolean isInBound(Coordinate coord) {
+			return isInBound(coord.getCoordinate());
+		}
+		
+	}
+	
+	public enum PieceColor {
+		WHITE, BLACK;
 	}
 	
 	public enum PieceID {

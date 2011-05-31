@@ -44,7 +44,13 @@ public class GUIManager extends JFrame {
 		JMenuItem miNewMulti = new JMenuItem(i18n.getString("MenuGameNewMulti"));
 		miNewMulti.setMnemonic(KeyEvent.VK_M);
 		miNewMulti.addActionListener(new MenuListener(MenuType.NEW_MULTI));
+		miNewMulti.setEnabled(false); // not now.
 		menuGame.add(miNewMulti);
+		JMenuItem miJoinMulti = new JMenuItem(i18n.getString("MenuGameJoinMulti"));
+		miJoinMulti.setMnemonic(KeyEvent.VK_J);
+		miJoinMulti.addActionListener(new MenuListener(MenuType.NEW_JOIN));
+		miJoinMulti.setEnabled(false); // not now.
+		menuGame.add(miJoinMulti);
 		menuGame.addSeparator();
 		JMenuItem miGiveUp = new JMenuItem(i18n.getString("MenuGameGiveUp"));
 		miGiveUp.setMnemonic(KeyEvent.VK_U);
@@ -143,6 +149,8 @@ public class GUIManager extends JFrame {
 					break;
 				case NEW_MULTI:
 					break;
+				case NEW_JOIN:
+					break;
 				case CURRENT_GIVEUP:
 					break;
 				case EXIT_GAME:
@@ -160,8 +168,8 @@ public class GUIManager extends JFrame {
 		
 	}
 	
-	public enum MenuType {
-		NEW_SINGLE, NEW_MULTI, CURRENT_GIVEUP, EXIT_GAME, DIFF_BAS, DIFF_ADV, DIFF_EXT;
+	private enum MenuType {
+		NEW_SINGLE, NEW_MULTI, NEW_JOIN, CURRENT_GIVEUP, EXIT_GAME, DIFF_BAS, DIFF_ADV, DIFF_EXT;
 	}
 	
 }

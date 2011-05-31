@@ -3,9 +3,16 @@ package com.cyrusian.academic.sra.element;
 
 public class Queen implements ChessPiece, Valuable {
 	
+	private ChessPiece.PieceColor color;
+	
 	@Override
 	public Coordinate[] getAllAvailableMoves(ChessBoard aBoard, Coordinate where) {
 		return null;
+	}
+	
+	@Override
+	public PieceColor getPieceColor() {
+		return color;
 	}
 	
 	@Override
