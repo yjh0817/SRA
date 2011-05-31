@@ -15,11 +15,13 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
+import com.cyrusian.academic.sra.i18n.Internationalization;
 
 
 public class GUIManager extends JFrame {
 	
 	private JButton[] theGrid;
+	private Internationalization i18n;
 	
 	public GUIManager() {
 		super("SRA");
@@ -27,47 +29,49 @@ public class GUIManager extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setBackground(Color.BLACK);
+		i18n = Internationalization.getInstance();
 		
 		
 		JMenuBar menuBar = new JMenuBar();
 		
-		JMenu menuGame = new JMenu("Game");
+		JMenu menuGame = new JMenu(i18n.getString("MenuGame"));
 		menuGame.setMnemonic(KeyEvent.VK_G);
 		menuBar.add(menuGame);
-		JMenuItem miNewSingle = new JMenuItem("New Singleplayer");
+		JMenuItem miNewSingle = new JMenuItem(i18n.getString("MenuGameNewSingle"));
 		miNewSingle.setMnemonic(KeyEvent.VK_S);
 		miNewSingle.addActionListener(new MenuListener(MenuType.NEW_SINGLE));
 		menuGame.add(miNewSingle);
-		JMenuItem miNewMulti = new JMenuItem("New Multiplayer");
+		JMenuItem miNewMulti = new JMenuItem(i18n.getString("MenuGameNewMulti"));
 		miNewMulti.setMnemonic(KeyEvent.VK_M);
 		miNewMulti.addActionListener(new MenuListener(MenuType.NEW_MULTI));
 		menuGame.add(miNewMulti);
 		menuGame.addSeparator();
-		JMenuItem miGiveUp = new JMenuItem("Give Up");
+		JMenuItem miGiveUp = new JMenuItem(i18n.getString("MenuGameGiveUp"));
 		miGiveUp.setMnemonic(KeyEvent.VK_U);
 		miGiveUp.addActionListener(new MenuListener(MenuType.CURRENT_GIVEUP));
 		menuGame.add(miGiveUp);
 		menuGame.addSeparator();
-		JMenuItem miExit = new JMenuItem("Exit");
+		JMenuItem miExit = new JMenuItem(i18n.getString("MenuGameExit"));
 		miExit.setMnemonic(KeyEvent.VK_X);
 		miExit.addActionListener(new MenuListener(MenuType.EXIT_GAME));
 		menuGame.add(miExit);
 		
-		JMenu menuDiff=new JMenu("Difficulty");
+		JMenu menuDiff=new JMenu(i18n.getString("MenuDifficulty"));
 		ButtonGroup diffGroup = new ButtonGroup();
 		menuDiff.setMnemonic(KeyEvent.VK_D);
 		menuBar.add(menuDiff);
-		JRadioButtonMenuItem miDiffBasic=new JRadioButtonMenuItem("Basic");
+		JRadioButtonMenuItem miDiffBasic=new JRadioButtonMenuItem(i18n.getString("MenuDifficultyBasic"));
 		miDiffBasic.setMnemonic(KeyEvent.VK_B);
 		miDiffBasic.addActionListener(new MenuListener(MenuType.DIFF_BAS));
+		miDiffBasic.setSelected(true);
 		diffGroup.add(miDiffBasic);
 		menuDiff.add(miDiffBasic);
-		JRadioButtonMenuItem miDiffAdvanced=new JRadioButtonMenuItem("Advanced");
+		JRadioButtonMenuItem miDiffAdvanced=new JRadioButtonMenuItem(i18n.getString("MenuDifficultyAdvanced"));
 		miDiffAdvanced.setMnemonic(KeyEvent.VK_A);
 		miDiffAdvanced.addActionListener(new MenuListener(MenuType.DIFF_ADV));
 		diffGroup.add(miDiffAdvanced);
 		menuDiff.add(miDiffAdvanced);
-		JRadioButtonMenuItem miDiffExtreme=new JRadioButtonMenuItem("Extreme");
+		JRadioButtonMenuItem miDiffExtreme=new JRadioButtonMenuItem(i18n.getString("MenuDifficultyExtreme"));
 		miDiffExtreme.setMnemonic(KeyEvent.VK_E);
 		miDiffExtreme.addActionListener(new MenuListener(MenuType.DIFF_EXT));
 		diffGroup.add(miDiffExtreme);
