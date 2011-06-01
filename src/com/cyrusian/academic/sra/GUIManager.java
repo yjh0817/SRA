@@ -60,12 +60,12 @@ public class GUIManager extends JFrame {
 		miJoinMulti.setMnemonic(KeyEvent.VK_J);
 		miJoinMulti.addActionListener(new MenuListener(MenuType.NEW_JOIN));
 		miJoinMulti.setEnabled(false); // not now.
-		menuGame.add(miJoinMulti);*/
+		menuGame.add(miJoinMulti);* /
 		menuGame.addSeparator();
 		JMenuItem miGiveUp = new JMenuItem(i18n.getString("MenuGameGiveUp"));
 		miGiveUp.setMnemonic(KeyEvent.VK_U);
 		miGiveUp.addActionListener(new MenuListener(MenuType.CURRENT_GIVEUP));
-		menuGame.add(miGiveUp);
+		menuGame.add(miGiveUp);*/
 		menuGame.addSeparator();
 		JMenuItem miExit = new JMenuItem(i18n.getString("MenuGameExit"));
 		miExit.setMnemonic(KeyEvent.VK_X);
@@ -205,6 +205,7 @@ public class GUIManager extends JFrame {
 		public void actionPerformed(ActionEvent ae){
 			switch(menuType) {
 				case NEW_SINGLE:
+					delegate.newGame(delegate.getEngine().getDifficulty());
 					break;
 				case NEW_MULTI:
 					break;
@@ -216,10 +217,13 @@ public class GUIManager extends JFrame {
 					System.exit(0);
 					break;
 				case DIFF_BAS:
+					delegate.getEngine().setDifficulty(ChessEngine.Difficulty.BASIC);
 					break;
 				case DIFF_ADV:
+					delegate.getEngine().setDifficulty(ChessEngine.Difficulty.ADVANCED);
 					break;
 				case DIFF_EXT:
+					delegate.getEngine().setDifficulty(ChessEngine.Difficulty.EXTREME);
 					break;
 				
 			}

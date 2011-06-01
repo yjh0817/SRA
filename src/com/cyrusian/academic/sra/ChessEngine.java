@@ -29,7 +29,7 @@ public final class ChessEngine {
 		traceable=new Stack<MoveHistory>();
 	}
 	
-	private int calculateBestMove(int levelLimit, int nowLevel) {
+	private void calculateBestMove() {//(int levelLimit, int nowLevel) {
 		/*
 		if(nowLevel%2==1) { // BLACK
 			
@@ -39,7 +39,8 @@ public final class ChessEngine {
 		}
 		//*/
 		
-		return 0;
+		//return 0;
+		
 	}
 	
 	public boolean isValid(int crd) {
@@ -51,7 +52,16 @@ public final class ChessEngine {
 		return false;
 	}
 	
+	public Difficulty getDifficulty() {
+		return difficulty;
+	}
+	
+	public void setDifficulty(Difficulty d) {
+		difficulty=d;
+	}
+	
 	public void runEngieRun(int from, int to) {
+		System.out.println(from+"/"+to);
 		char[] alloc=mainBoard.getAllocation();
 		Integer[] allows;
 		boolean found=false;
@@ -69,7 +79,7 @@ public final class ChessEngine {
 		mainBoard.move(from, to);
 		delegate.updateBoard(mainBoard);
 		
-		
+		calculateBestMove();
 	}
 	
 	public enum Difficulty {

@@ -12,6 +12,7 @@ public class Pawn extends Piece {
 	@Override
 	public Integer[] getAllAvailableMoves(ChessBoard aBoard, int where) {
 		HashSet<Integer> moves = new HashSet<Integer>();
+		char[] alloc=aBoard.getAllocation();
 		
 		Integer[] crdSet = new Integer[moves.size()];
 		moves.toArray(crdSet);

@@ -29,7 +29,11 @@ public final class SRAMain {
 	}
 	
 	public void newGame() {
-		engietan = new ChessEngine(mainWindow, ChessEngine.Difficulty.BASIC);
+		newGame(ChessEngine.Difficulty.BASIC);
+	}
+	
+	public void newGame(ChessEngine.Difficulty d) {
+		engietan = new ChessEngine(mainWindow, d);
 	}
 	
 	public static void main(String[] args) {
