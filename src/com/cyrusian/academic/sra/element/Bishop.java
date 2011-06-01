@@ -10,72 +10,100 @@ public class Bishop extends Piece {
 	}
 	
 	@Override
-	public Coordinate[] getAllAvailableMoves(ChessBoard aBoard, Coordinate where) {
-		HashSet<Coordinate> moves = new HashSet<Coordinate>();
+	public Integer[] getAllAvailableMoves(ChessBoard aBoard, int where) {
+		HashSet<Integer> moves = new HashSet<Integer>();
+		char[] alloc=aBoard.getAllocation();
 		
-		Coordinate tmpCrd = where.clone();
+		int cursor=where;
 		do {
-			tmpCrd.moveNorth().moveWest();
-			if(ChessPiece.Handyman.isInBound(tmpCrd) == true) {
-				if(aBoard.getPieceAtCoord(tmpCrd).getPieceID() == ChessPiece.Identifier.NONE)
-					moves.add(tmpCrd.clone());
-				else if(aBoard.getPieceAtCoord(tmpCrd).getOppositeColor() == color) {
-					moves.add(tmpCrd.clone());
-					break;
-				} else if(aBoard.getPieceAtCoord(tmpCrd).getColor() == color)
+			cursor-=9;
+			if(cursor>=0) {
+				if(color==ChessPiece.Color.BLACK) {
+					if(alloc[cursor]=='.' || (alloc[cursor]>=65 && alloc[cursor]<=90))
+						moves.add(cursor);
+					else
+						break;
+				} else {
+					if(alloc[cursor]=='.' || (alloc[cursor]>=97 && alloc[cursor]<=122))
+						moves.add(cursor);
+					else
+						break;
+				}
+				
+				if(cursor%8==0 || cursor<=7)
 					break;
 			} else
 				break;
 		} while(true);
 		
-		tmpCrd = where.clone();
+		cursor=where;
 		do {
-			tmpCrd.moveWest().moveSouth();
-			if(ChessPiece.Handyman.isInBound(tmpCrd) == true) {
-				if(aBoard.getPieceAtCoord(tmpCrd).getPieceID() == ChessPiece.Identifier.NONE)
-					moves.add(tmpCrd.clone());
-				else if(aBoard.getPieceAtCoord(tmpCrd).getOppositeColor() == color) {
-					moves.add(tmpCrd.clone());
-					break;
-				} else if(aBoard.getPieceAtCoord(tmpCrd).getColor() == color)
+			cursor+=9;
+			if(cursor<=63) {
+				if(color==ChessPiece.Color.BLACK) {
+					if(alloc[cursor]=='.' || (alloc[cursor]>=65 && alloc[cursor]<=90))
+						moves.add(cursor);
+					else
+						break;
+				} else {
+					if(alloc[cursor]=='.' || (alloc[cursor]>=97 && alloc[cursor]<=122))
+						moves.add(cursor);
+					else
+						break;
+				}
+				
+				if(cursor%7==0 || cursor>=56)
 					break;
 			} else
 				break;
 		} while(true);
 		
-		tmpCrd = where.clone();
+		cursor=where;
 		do {
-			tmpCrd.moveSouth().moveEast();
-			if(ChessPiece.Handyman.isInBound(tmpCrd) == true) {
-				if(aBoard.getPieceAtCoord(tmpCrd).getPieceID() == ChessPiece.Identifier.NONE)
-					moves.add(tmpCrd.clone());
-				else if(aBoard.getPieceAtCoord(tmpCrd).getOppositeColor() == color) {
-					moves.add(tmpCrd.clone());
-					break;
-				} else if(aBoard.getPieceAtCoord(tmpCrd).getColor() == color)
+			cursor-=7;
+			if(cursor>=0) {
+				if(color==ChessPiece.Color.BLACK) {
+					if(alloc[cursor]=='.' || (alloc[cursor]>=65 && alloc[cursor]<=90))
+						moves.add(cursor);
+					else
+						break;
+				} else {
+					if(alloc[cursor]=='.' || (alloc[cursor]>=97 && alloc[cursor]<=122))
+						moves.add(cursor);
+					else
+						break;
+				}
+				
+				if(cursor%7==0 || cursor<=7)
 					break;
 			} else
 				break;
 		} while(true);
 		
-		tmpCrd = where.clone();
+		cursor=where;
 		do {
-			tmpCrd.moveEast().moveNorth();
-			if(ChessPiece.Handyman.isInBound(tmpCrd) == true) {
-				if(aBoard.getPieceAtCoord(tmpCrd).getPieceID() == ChessPiece.Identifier.NONE)
-					moves.add(tmpCrd.clone());
-				else if(aBoard.getPieceAtCoord(tmpCrd).getOppositeColor() == color) {
-					moves.add(tmpCrd.clone());
-					break;
-				} else if(aBoard.getPieceAtCoord(tmpCrd).getColor() == color)
+			cursor+=7;
+			if(cursor>=0) {
+				if(color==ChessPiece.Color.BLACK) {
+					if(alloc[cursor]=='.' || (alloc[cursor]>=65 && alloc[cursor]<=90))
+						moves.add(cursor);
+					else
+						break;
+				} else {
+					if(alloc[cursor]=='.' || (alloc[cursor]>=97 && alloc[cursor]<=122))
+						moves.add(cursor);
+					else
+						break;
+				}
+				
+				if(cursor%8==0 || cursor>=56)
 					break;
 			} else
 				break;
 		} while(true);
 		
-		Coordinate[] crdSet = new Coordinate[moves.size()];
+		Integer[] crdSet = new Integer[moves.size()];
 		moves.toArray(crdSet);
-		tmpCrd = null;
 		moves = null;
 		
 		return crdSet;

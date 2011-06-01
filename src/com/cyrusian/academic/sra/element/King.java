@@ -10,30 +10,20 @@ public class King extends Piece {
 	}
 	
 	@Override
-	public Coordinate[] getAllAvailableMoves(ChessBoard aBoard, Coordinate where) {
-		HashSet<Coordinate> moves = new HashSet<Coordinate>();
+	public Integer[] getAllAvailableMoves(ChessBoard aBoard, int where) {
+		HashSet<Integer> moves = new HashSet<Integer>();
 		
-		Coordinate tmpCrd = where.clone().moveNorth();
-		moves.add(ChessPiece.Handyman.isInBound(tmpCrd) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
-		tmpCrd.moveEast();
-		moves.add(ChessPiece.Handyman.isInBound(tmpCrd) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
-		tmpCrd.moveSouth();
-		moves.add(ChessPiece.Handyman.isInBound(tmpCrd) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
-		tmpCrd.moveSouth();
-		moves.add(ChessPiece.Handyman.isInBound(tmpCrd) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
-		tmpCrd.moveWest();
-		moves.add(ChessPiece.Handyman.isInBound(tmpCrd) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
-		tmpCrd.moveWest();
-		moves.add(ChessPiece.Handyman.isInBound(tmpCrd) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
-		tmpCrd.moveNorth();
-		moves.add(ChessPiece.Handyman.isInBound(tmpCrd) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
-		tmpCrd.moveNorth();
-		moves.add(ChessPiece.Handyman.isInBound(tmpCrd) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
-		moves.remove(null);
+		moves.add(where-9);
+		moves.add(where-8);
+		moves.add(where-7);
+		moves.add(where-1);
+		moves.add(where+1);
+		moves.add(where+7);
+		moves.add(where+8);
+		moves.add(where+9);
 		
-		Coordinate[] crdSet = new Coordinate[moves.size()];
+		Integer[] crdSet = new Integer[moves.size()];
 		moves.toArray(crdSet);
-		tmpCrd = null;
 		moves = null;
 		
 		return crdSet;

@@ -3,7 +3,7 @@ package com.cyrusian.academic.sra.element;
 
 public interface ChessPiece {
 	
-	public Coordinate[] getAllAvailableMoves(ChessBoard aBoard, Coordinate where); // Note: this method does not deal with Check. At least now.
+	public Integer[] getAllAvailableMoves(ChessBoard aBoard, int where); // Note: this method does not deal with Check. At least now.
 	public Color getColor();
 	public Color getOppositeColor();
 	public Identifier getPieceID();

@@ -15,6 +15,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
+import com.cyrusian.academic.sra.element.ChessBoard;
 import com.cyrusian.academic.sra.i18n.Internationalization;
 
 
@@ -22,20 +23,23 @@ public class GUIManager extends JFrame {
 	
 	private JButton[] theGrid;
 	private Internationalization i18n;
-	private ImageIcon[] boardTiles = {new ImageIcon(getClass().getResource("imageresource/Chess-Brown.png")), new ImageIcon(getClass().getResource("imageresource/Chess-LightBrown.png"))};
+	//private ImageIcon[] boardTiles = {new ImageIcon(getClass().getResource("imageresource/Chess-Brown.png")), new ImageIcon(getClass().getResource("imageresource/Chess-LightBrown.png"))};
 	private HashMap<String, ImageIcon> chessPieces;
 	private int selected;
 	private SRAMain delegate;
 	
 	public GUIManager(SRAMain deleg) {
 		super("SRA");
+		delegate=deleg;
+		i18n = Internationalization.getInstance();
+		selected=-1;
+	}
+	
+	public void prepare() {
 		setSize(640, 640); // why 900, 688?
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setBackground(Color.BLACK);
-		i18n = Internationalization.getInstance();
-		selected=-1;
-		delegate=deleg;
 		
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -92,39 +96,23 @@ public class GUIManager extends JFrame {
 		setJMenuBar(menuBar);
 		
 
-		
 		JPanel playGround = new JPanel();
 		playGround.setLayout(new GridLayout(8, 8));
-		
-		// prepare images
-		chessPieces = new HashMap<String, ImageIcon>();
-		chessPieces.put("Bishop-White", new ImageIcon(getClass().getResource("imageresource/Bishop-White.png")));
-		chessPieces.put("Bishop-Black", new ImageIcon(getClass().getResource("imageresource/Bishop-Black.png")));
-		chessPieces.put("King-White", new ImageIcon(getClass().getResource("imageresource/King-White.png")));
-		chessPieces.put("King-Black", new ImageIcon(getClass().getResource("imageresource/King-Black.png")));
-		chessPieces.put("Knight-White", new ImageIcon(getClass().getResource("imageresource/Knight-White.png")));
-		chessPieces.put("Knight-Black", new ImageIcon(getClass().getResource("imageresource/Knight-Black.png")));
-		chessPieces.put("Pawn-White", new ImageIcon(getClass().getResource("imageresource/Pawn-White.png")));
-		chessPieces.put("Pawn-Black", new ImageIcon(getClass().getResource("imageresource/Pawn-Black.png")));
-		chessPieces.put("Queen-White", new ImageIcon(getClass().getResource("imageresource/Queen-White.png")));
-		chessPieces.put("Queen-Black", new ImageIcon(getClass().getResource("imageresource/Queen-Black.png")));
-		chessPieces.put("Rook-White", new ImageIcon(getClass().getResource("imageresource/Rook-White.png")));
-		chessPieces.put("Rook-Black", new ImageIcon(getClass().getResource("imageresource/Rook-Black.png")));
 		
 		theGrid = new JButton[64];
 		for(int loopy = 0; loopy < 64; ++loopy) {
 			if(((loopy - (loopy % 8)) / 8) % 2 == 0) {
-				theGrid[loopy] = new JButton(Integer.toString(loopy));//boardTiles[loopy % 2]);
+				theGrid[loopy] = new JButton();//boardTiles[loopy % 2]);
 				// 이 부분은 1~8번째 "줄" 중 1, 3, 5, 7번째 줄 담당.
 				// 여기 컬러 먹이는 코드 작성
 			} else {
-				theGrid[loopy] = new JButton(Integer.toString(loopy));//boardTiles[(loopy + 1) % 2]);
+				theGrid[loopy] = new JButton();//boardTiles[(loopy + 1) % 2]);
 				// 이 부분은 1~8번째 "줄" 중 2, 4, 6, 8번째 줄 담당.
 				// 여기 컬러 먹이는 코드 작성
 			}
 			theGrid[loopy].addActionListener(new MoveListener(loopy));
 			theGrid[loopy].setRolloverEnabled(false);
-			//theGrid[loopy].setBorderPainted(false);
+			theGrid[loopy].setBorderPainted(false);
 			
 			playGround.add(theGrid[loopy]);
 		}
@@ -134,12 +122,55 @@ public class GUIManager extends JFrame {
 		
   	}
 	
-	public JButton getButtonAt(int index) {
-		return theGrid[index];
-	}
-	
-	public HashMap<String, ImageIcon> getPieceImages() {
-		return chessPieces;
+	public void updateBoard(ChessBoard currentBoard) {
+		char[] allocation = currentBoard.getAllocation();
+		
+		int count=0;
+		for(char ainfo:allocation) {
+			StringBuilder fileName=new StringBuilder("imageresource/");
+			
+			switch(ainfo) {
+				case 'b':
+				case 'B':
+					fileName.append("Bishop-");
+					break;
+				case 'k':
+				case 'K':
+					fileName.append("King-");
+					break;
+				case 'n':
+				case 'N':
+					fileName.append("Knight-");
+					break;
+				case 'p':
+				case 'P':
+					fileName.append("Pawn-");
+					break;
+				case 'q':
+				case 'Q':
+					fileName.append("Queen-");
+					break;
+				case 'r':
+				case 'R':
+					fileName.append("Rook-");
+					break;
+				default:
+					fileName.append("Empty-");
+					break;
+			}
+			
+			if(ainfo>=65 && ainfo<=90)
+				fileName.append("White-");
+			else if(ainfo>=97 && ainfo<=122)
+				fileName.append("Black-");
+			
+			if(((count - (count % 8)) / 8) % 2 == 0)
+				fileName.append(count%2==0?"Even.png":"Odd.png");
+			else
+				fileName.append(count%2==1?"Even.png":"Odd.png");
+			
+			theGrid[count++].setIcon(new ImageIcon(getClass().getResource(fileName.toString())));
+		}
 	}
 	
 	private class MoveListener implements ActionListener {

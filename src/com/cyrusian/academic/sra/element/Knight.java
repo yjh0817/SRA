@@ -10,30 +10,23 @@ public class Knight extends Piece {
 	}
 	
 	@Override
-	public Coordinate[] getAllAvailableMoves(ChessBoard aBoard, Coordinate where) {
-		HashSet<Coordinate> moves = new HashSet<Coordinate>();
+	public Integer[] getAllAvailableMoves(ChessBoard aBoard, int where) {
+		HashSet<Integer> moves = new HashSet<Integer>();
 		
-		Coordinate tmpCrd = where.clone().moveNorth().moveNorth().moveWest();
-		moves.add(ChessPiece.Handyman.isInBound(tmpCrd) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
-		tmpCrd.moveEast().moveEast();
-		moves.add(ChessPiece.Handyman.isInBound(tmpCrd) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
-		tmpCrd.moveEast().moveSouth();
-		moves.add(ChessPiece.Handyman.isInBound(tmpCrd) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
-		tmpCrd.moveSouth().moveSouth();
-		moves.add(ChessPiece.Handyman.isInBound(tmpCrd) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
-		tmpCrd.moveSouth().moveWest();
-		moves.add(ChessPiece.Handyman.isInBound(tmpCrd) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
-		tmpCrd.moveWest().moveWest();
-		moves.add(ChessPiece.Handyman.isInBound(tmpCrd) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
-		tmpCrd.moveWest().moveNorth();
-		moves.add(ChessPiece.Handyman.isInBound(tmpCrd) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
-		tmpCrd.moveNorth().moveNorth();
-		moves.add(ChessPiece.Handyman.isInBound(tmpCrd) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
+		
+		
+		moves.add(ChessPiece.Handyman.isInBound(where-17)==true?where-17:null);
+		moves.add(ChessPiece.Handyman.isInBound(where-15)==true?where-15:null);
+		moves.add(ChessPiece.Handyman.isInBound(where-10)==true?where-10:null);
+		moves.add(ChessPiece.Handyman.isInBound(where-6)==true?where-6:null);
+		moves.add(ChessPiece.Handyman.isInBound(where+6)==true?where+6:null);
+		moves.add(ChessPiece.Handyman.isInBound(where+10)==true?where+10:null);
+		moves.add(ChessPiece.Handyman.isInBound(where+15)==true?where+15:null);
+		moves.add(ChessPiece.Handyman.isInBound(where+17)==true?where+17:null);
 		moves.remove(null);
 		
-		Coordinate[] crdSet = new Coordinate[moves.size()];
+		Integer[] crdSet = new Integer[moves.size()];
 		moves.toArray(crdSet);
-		tmpCrd = null;
 		moves = null;
 		
 		return crdSet;

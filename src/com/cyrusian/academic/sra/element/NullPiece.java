@@ -4,8 +4,8 @@ package com.cyrusian.academic.sra.element;
 public class NullPiece implements ChessPiece {
 	
 	@Override
-	public Coordinate[] getAllAvailableMoves(ChessBoard aBoard, Coordinate where) {
-		return new Coordinate[0];
+	public Integer[] getAllAvailableMoves(ChessBoard aBoard, int where) {
+		return new Integer[0];
 	}
 	
 	@Override

@@ -16,7 +16,8 @@ public final class SRAMain {
 	
 	private SRAMain() {
 		mainWindow = new GUIManager(this);
-		engietan = new ChessEngine(mainWindow, ChessEngine.Difficulty.ADVANCED);
+		mainWindow.prepare();
+		newGame();
 	}
 	
 	private void powerUp() {
@@ -25,6 +26,10 @@ public final class SRAMain {
 	
 	public ChessEngine getEngine() {
 		return engietan;
+	}
+	
+	public void newGame() {
+		engietan = new ChessEngine(mainWindow, ChessEngine.Difficulty.BASIC);
 	}
 	
 	public static void main(String[] args) {

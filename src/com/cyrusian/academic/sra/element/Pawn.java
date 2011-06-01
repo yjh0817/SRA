@@ -10,25 +10,11 @@ public class Pawn extends Piece {
 	}
 	
 	@Override
-	public Coordinate[] getAllAvailableMoves(ChessBoard aBoard, Coordinate where) {
-		HashSet<Coordinate> moves = new HashSet<Coordinate>();
-		Coordinate tmpCrd = where.clone();
-		if(color == ChessPiece.Color.WHITE) {
-			moves.add(ChessPiece.Handyman.isInBound(tmpCrd.moveNorth()) == true && aBoard.getPieceAtCoord(tmpCrd).getPieceID() == ChessPiece.Identifier.NONE ? tmpCrd.clone() : null);
-			moves.add(ChessPiece.Handyman.isInBound(tmpCrd.moveWest()) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
-			moves.add(ChessPiece.Handyman.isInBound(tmpCrd.moveEast().moveEast()) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
-			moves.add(where.getCoordinate() >= 48 && where.getCoordinate() <= 55 && aBoard.getPieceAtCoord(tmpCrd.moveNorth().moveWest()).getPieceID() == ChessPiece.Identifier.NONE ? tmpCrd.clone() : null);
-		} else {
-			moves.add(ChessPiece.Handyman.isInBound(tmpCrd.moveSouth()) == true && aBoard.getPieceAtCoord(tmpCrd).getPieceID() == ChessPiece.Identifier.NONE ? tmpCrd.clone() : null);
-			moves.add(ChessPiece.Handyman.isInBound(tmpCrd.moveWest()) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
-			moves.add(ChessPiece.Handyman.isInBound(tmpCrd.moveEast().moveEast()) == true && aBoard.getPieceAtCoord(tmpCrd).getColor() != color ? tmpCrd.clone() : null);
-			moves.add(where.getCoordinate() >= 8 && where.getCoordinate() <= 15 && aBoard.getPieceAtCoord(tmpCrd.moveSouth().moveWest()).getPieceID() == ChessPiece.Identifier.NONE ? tmpCrd.clone() : null);
-		}
-		moves.remove(null);
+	public Integer[] getAllAvailableMoves(ChessBoard aBoard, int where) {
+		HashSet<Integer> moves = new HashSet<Integer>();
 		
-		Coordinate[] crdSet = new Coordinate[moves.size()];
+		Integer[] crdSet = new Integer[moves.size()];
 		moves.toArray(crdSet);
-		tmpCrd = null;
 		moves = null;
 		
 		return crdSet;
