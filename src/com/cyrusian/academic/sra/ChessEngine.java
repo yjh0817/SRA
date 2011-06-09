@@ -30,17 +30,7 @@ public final class ChessEngine {
 	}
 	
 	private void calculateBestMove() {//(int levelLimit, int nowLevel) {
-		/*
-		if(nowLevel%2==1) { // BLACK
-			
-			if(levelLimit==nowLevel) {
-				int 
-			}
-		}
-		//*/
-		
-		//return 0;
-		
+		//
 	}
 	
 	public boolean isValid(int crd) {
