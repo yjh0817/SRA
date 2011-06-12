@@ -10,21 +10,21 @@ public class Bishop extends Piece {
 	}
 	
 	@Override
-	public Integer[] getAllAvailableMoves(ChessBoard aBoard, int where) {
+	public Integer[] getAllAvailableMoves(ChessBoard aBoard, int where) { // checked
 		HashSet<Integer> moves = new HashSet<Integer>();
 		char[] alloc=aBoard.getAllocation();
 		
 		int cursor=where;
 		do {
 			cursor-=9;
-			if(cursor>=0) {
+			if(ChessPiece.Handyman.isInBound(cursor)==true) {
 				if(color==ChessPiece.Color.BLACK) {
-					if(alloc[cursor]=='.' || (alloc[cursor]>=65 && alloc[cursor]<=90))
+					if(alloc[cursor]=='.' || Character.isUpperCase(alloc[cursor])==true)
 						moves.add(cursor);
 					else
 						break;
 				} else {
-					if(alloc[cursor]=='.' || (alloc[cursor]>=97 && alloc[cursor]<=122))
+					if(alloc[cursor]=='.' || Character.isLowerCase(alloc[cursor])==true)
 						moves.add(cursor);
 					else
 						break;
@@ -39,14 +39,14 @@ public class Bishop extends Piece {
 		cursor=where;
 		do {
 			cursor+=9;
-			if(cursor<=63) {
+			if(ChessPiece.Handyman.isInBound(cursor)==true) {
 				if(color==ChessPiece.Color.BLACK) {
-					if(alloc[cursor]=='.' || (alloc[cursor]>=65 && alloc[cursor]<=90))
+					if(alloc[cursor]=='.' || Character.isUpperCase(alloc[cursor])==true)
 						moves.add(cursor);
 					else
 						break;
 				} else {
-					if(alloc[cursor]=='.' || (alloc[cursor]>=97 && alloc[cursor]<=122))
+					if(alloc[cursor]=='.' || Character.isLowerCase(alloc[cursor])==true)
 						moves.add(cursor);
 					else
 						break;
@@ -61,14 +61,14 @@ public class Bishop extends Piece {
 		cursor=where;
 		do {
 			cursor-=7;
-			if(cursor>=0) {
+			if(ChessPiece.Handyman.isInBound(cursor)==true) {
 				if(color==ChessPiece.Color.BLACK) {
-					if(alloc[cursor]=='.' || (alloc[cursor]>=65 && alloc[cursor]<=90))
+					if(alloc[cursor]=='.' || Character.isUpperCase(alloc[cursor])==true)
 						moves.add(cursor);
 					else
 						break;
 				} else {
-					if(alloc[cursor]=='.' || (alloc[cursor]>=97 && alloc[cursor]<=122))
+					if(alloc[cursor]=='.' || Character.isLowerCase(alloc[cursor])==true)
 						moves.add(cursor);
 					else
 						break;
@@ -83,14 +83,14 @@ public class Bishop extends Piece {
 		cursor=where;
 		do {
 			cursor+=7;
-			if(cursor>=0) {
+			if(ChessPiece.Handyman.isInBound(cursor)==true) {
 				if(color==ChessPiece.Color.BLACK) {
-					if(alloc[cursor]=='.' || (alloc[cursor]>=65 && alloc[cursor]<=90))
+					if(alloc[cursor]=='.' || Character.isUpperCase(alloc[cursor])==true)
 						moves.add(cursor);
 					else
 						break;
 				} else {
-					if(alloc[cursor]=='.' || (alloc[cursor]>=97 && alloc[cursor]<=122))
+					if(alloc[cursor]=='.' || Character.isLowerCase(alloc[cursor])==true)
 						moves.add(cursor);
 					else
 						break;

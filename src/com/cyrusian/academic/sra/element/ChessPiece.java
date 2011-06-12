@@ -26,6 +26,13 @@ public interface ChessPiece {
 			return isInBound(coord.getCoordinate());
 		}
 		
+		public static boolean isColorWhite(char p) {
+			if(Character.isUpperCase(p)==true)
+				return true;
+			else
+				return false;
+		}
+		
 	}
 	
 	public enum Color {

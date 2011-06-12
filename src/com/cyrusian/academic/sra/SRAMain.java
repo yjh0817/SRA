@@ -16,17 +16,12 @@ public final class SRAMain {
 	
 	private SRAMain() {
 		mainWindow = new GUIManager(this);
+		mainWindow.prepare();
 		newGame();
-		mainWindow.prepare(engietan);
-		mainWindow.updateBoard();
 	}
 	
 	private void powerUp() {
 		mainWindow.setVisible(true);
-	}
-	
-	public ChessEngine getEngine() {
-		return engietan;
 	}
 	
 	public void newGame() {
@@ -35,6 +30,8 @@ public final class SRAMain {
 	
 	public void newGame(ChessEngine.Difficulty d) {
 		engietan = new ChessEngine(mainWindow, d);
+		mainWindow.setEngine(engietan);
+		mainWindow.updateBoard();
 	}
 	
 	public static void main(String[] args) {

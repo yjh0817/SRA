@@ -80,6 +80,7 @@ public class ChessBoard implements Cloneable {
 	public void move(int from, int to) {
 		allocs[to]=allocs[from];
 		allocs[from]='.';
+		System.out.println("Moving");
 	}
 	
 	/*@Override

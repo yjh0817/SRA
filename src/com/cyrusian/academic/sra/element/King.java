@@ -10,28 +10,28 @@ public class King extends Piece {
 	}
 	
 	@Override
-	public Integer[] getAllAvailableMoves(ChessBoard aBoard, int where) {
+	public Integer[] getAllAvailableMoves(ChessBoard aBoard, int where) { // checked
 		HashSet<Integer> moves = new HashSet<Integer>();
 		char[] alloc=aBoard.getAllocation();
 		
 		if(color==ChessPiece.Color.BLACK) {
-			moves.add(ChessPiece.Handyman.isInBound(where-9)==true && alloc[where-9]>=65 && alloc[where-9]<=90 ?where-17:null);
-			moves.add(ChessPiece.Handyman.isInBound(where-8)==true && alloc[where-8]>=65 && alloc[where-8]<=90?where-15:null);
-			moves.add(ChessPiece.Handyman.isInBound(where-7)==true && alloc[where-7]>=65 && alloc[where-7]<=90?where-10:null);
-			moves.add(ChessPiece.Handyman.isInBound(where-1)==true && alloc[where-1]>=65 && alloc[where-1]<=90?where-6:null);
-			moves.add(ChessPiece.Handyman.isInBound(where+1)==true && alloc[where+1]>=65 && alloc[where+1]<=90?where+6:null);
-			moves.add(ChessPiece.Handyman.isInBound(where+7)==true && alloc[where+7]>=65 && alloc[where+7]<=90?where+10:null);
-			moves.add(ChessPiece.Handyman.isInBound(where+8)==true && alloc[where+8]>=65 && alloc[where+8]<=90?where+15:null);
-			moves.add(ChessPiece.Handyman.isInBound(where+9)==true && alloc[where+9]>=65 && alloc[where+9]<=90?where+17:null);
+			moves.add(ChessPiece.Handyman.isInBound(where-9)==true && (alloc[where-9]=='.' || Character.isUpperCase(alloc[where-9])==true)?where-17:null);
+			moves.add(ChessPiece.Handyman.isInBound(where-8)==true && (alloc[where-9]=='.' || Character.isUpperCase(alloc[where-8])==true)?where-15:null);
+			moves.add(ChessPiece.Handyman.isInBound(where-7)==true && (alloc[where-9]=='.' || Character.isUpperCase(alloc[where-7])==true)?where-10:null);
+			moves.add(ChessPiece.Handyman.isInBound(where-1)==true && (alloc[where-9]=='.' || Character.isUpperCase(alloc[where-1])==true)?where-6:null);
+			moves.add(ChessPiece.Handyman.isInBound(where+1)==true && (alloc[where-9]=='.' || Character.isUpperCase(alloc[where+1])==true)?where+6:null);
+			moves.add(ChessPiece.Handyman.isInBound(where+7)==true && (alloc[where-9]=='.' || Character.isUpperCase(alloc[where+7])==true)?where+10:null);
+			moves.add(ChessPiece.Handyman.isInBound(where+8)==true && (alloc[where-9]=='.' || Character.isUpperCase(alloc[where+8])==true)?where+15:null);
+			moves.add(ChessPiece.Handyman.isInBound(where+9)==true && (alloc[where-9]=='.' || Character.isUpperCase(alloc[where+9])==true)?where+17:null);
 		} else {
-			moves.add(ChessPiece.Handyman.isInBound(where-9)==true && alloc[where-9]>=97 && alloc[where-9]<=122 ?where-17:null);
-			moves.add(ChessPiece.Handyman.isInBound(where-8)==true && alloc[where-8]>=97 && alloc[where-8]<=122?where-15:null);
-			moves.add(ChessPiece.Handyman.isInBound(where-7)==true && alloc[where-7]>=97 && alloc[where-7]<=122?where-10:null);
-			moves.add(ChessPiece.Handyman.isInBound(where-1)==true && alloc[where-1]>=97 && alloc[where-1]<=122?where-6:null);
-			moves.add(ChessPiece.Handyman.isInBound(where+1)==true && alloc[where+1]>=97 && alloc[where+1]<=122?where+6:null);
-			moves.add(ChessPiece.Handyman.isInBound(where+7)==true && alloc[where+7]>=97 && alloc[where+7]<=122?where+10:null);
-			moves.add(ChessPiece.Handyman.isInBound(where+8)==true && alloc[where+8]>=97 && alloc[where+8]<=122?where+15:null);
-			moves.add(ChessPiece.Handyman.isInBound(where+9)==true && alloc[where+9]>=97 && alloc[where+9]<=122?where+17:null);
+			moves.add(ChessPiece.Handyman.isInBound(where-9)==true && (alloc[where-9]=='.' || Character.isLowerCase(alloc[where-9])==true)?where-17:null);
+			moves.add(ChessPiece.Handyman.isInBound(where-8)==true && (alloc[where-9]=='.' || Character.isLowerCase(alloc[where-8])==true)?where-15:null);
+			moves.add(ChessPiece.Handyman.isInBound(where-7)==true && (alloc[where-9]=='.' || Character.isLowerCase(alloc[where-7])==true)?where-10:null);
+			moves.add(ChessPiece.Handyman.isInBound(where-1)==true && (alloc[where-9]=='.' || Character.isLowerCase(alloc[where-1])==true)?where-6:null);
+			moves.add(ChessPiece.Handyman.isInBound(where+1)==true && (alloc[where-9]=='.' || Character.isLowerCase(alloc[where+1])==true)?where+6:null);
+			moves.add(ChessPiece.Handyman.isInBound(where+7)==true && (alloc[where-9]=='.' || Character.isLowerCase(alloc[where+7])==true)?where+10:null);
+			moves.add(ChessPiece.Handyman.isInBound(where+8)==true && (alloc[where-9]=='.' || Character.isLowerCase(alloc[where+8])==true)?where+15:null);
+			moves.add(ChessPiece.Handyman.isInBound(where+9)==true && (alloc[where-9]=='.' || Character.isLowerCase(alloc[where+9])==true)?where+17:null);
 		}
 		moves.remove(null);
 		
@@ -49,7 +49,7 @@ public class King extends Piece {
 	
 	@Override
 	public int getValue() {
-		return Integer.MAX_VALUE;
+		return 10;
 	}
 	
 	@Override

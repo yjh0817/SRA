@@ -34,8 +34,7 @@ public class GUIManager extends JFrame {
 		selected=-1;
 	}
 	
-	public GUIManager prepare(ChessEngine engie) {
-		engietan=engie;
+	public GUIManager prepare() {
 		setSize(640, 640);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
@@ -116,6 +115,10 @@ public class GUIManager extends JFrame {
 		
 		return this;
   	}
+	
+	public void setEngine(ChessEngine engie) {
+		engietan=engie;
+	}
 	
 	public void updateBoard() {
 		updateBoard(engietan.getBoard());
