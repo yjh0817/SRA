@@ -19,15 +19,19 @@ public class Bishop extends Piece {
 			cursor-=9;
 			if(ChessPiece.Handyman.isInBound(cursor)==true) {
 				if(color==ChessPiece.Color.BLACK) {
-					if(alloc[cursor]=='.' || Character.isUpperCase(alloc[cursor])==true)
+					if(alloc[cursor]=='.') {
 						moves.add(cursor);
-					else
-						break;
+						
+						if(Character.isUpperCase(alloc[cursor])==true)
+							break;
+					}
 				} else {
-					if(alloc[cursor]=='.' || Character.isLowerCase(alloc[cursor])==true)
+					if(alloc[cursor]=='.') {
 						moves.add(cursor);
-					else
-						break;
+						
+						if(Character.isLowerCase(alloc[cursor])==true)
+							break;
+					}
 				}
 				
 				if(cursor%8==0 || cursor<=7)
@@ -41,15 +45,19 @@ public class Bishop extends Piece {
 			cursor+=9;
 			if(ChessPiece.Handyman.isInBound(cursor)==true) {
 				if(color==ChessPiece.Color.BLACK) {
-					if(alloc[cursor]=='.' || Character.isUpperCase(alloc[cursor])==true)
+					if(alloc[cursor]=='.') {
 						moves.add(cursor);
-					else
-						break;
+						
+						if(Character.isUpperCase(alloc[cursor])==true)
+							break;
+					}
 				} else {
-					if(alloc[cursor]=='.' || Character.isLowerCase(alloc[cursor])==true)
+					if(alloc[cursor]=='.') {
 						moves.add(cursor);
-					else
-						break;
+						
+						if(Character.isLowerCase(alloc[cursor])==true)
+							break;
+					}
 				}
 				
 				if(cursor%7==0 || cursor>=56)
@@ -63,15 +71,19 @@ public class Bishop extends Piece {
 			cursor-=7;
 			if(ChessPiece.Handyman.isInBound(cursor)==true) {
 				if(color==ChessPiece.Color.BLACK) {
-					if(alloc[cursor]=='.' || Character.isUpperCase(alloc[cursor])==true)
+					if(alloc[cursor]=='.') {
 						moves.add(cursor);
-					else
-						break;
+						
+						if(Character.isUpperCase(alloc[cursor])==true)
+							break;
+					}
 				} else {
-					if(alloc[cursor]=='.' || Character.isLowerCase(alloc[cursor])==true)
+					if(alloc[cursor]=='.') {
 						moves.add(cursor);
-					else
-						break;
+						
+						if(Character.isLowerCase(alloc[cursor])==true)
+							break;
+					}
 				}
 				
 				if(cursor%7==0 || cursor<=7)
@@ -85,15 +97,19 @@ public class Bishop extends Piece {
 			cursor+=7;
 			if(ChessPiece.Handyman.isInBound(cursor)==true) {
 				if(color==ChessPiece.Color.BLACK) {
-					if(alloc[cursor]=='.' || Character.isUpperCase(alloc[cursor])==true)
+					if(alloc[cursor]=='.') {
 						moves.add(cursor);
-					else
-						break;
+						
+						if(Character.isUpperCase(alloc[cursor])==true)
+							break;
+					}
 				} else {
-					if(alloc[cursor]=='.' || Character.isLowerCase(alloc[cursor])==true)
+					if(alloc[cursor]=='.') {
 						moves.add(cursor);
-					else
-						break;
+						
+						if(Character.isLowerCase(alloc[cursor])==true)
+							break;
+					}
 				}
 				
 				if(cursor%8==0 || cursor>=56)
