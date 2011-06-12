@@ -19,13 +19,18 @@ public class Rook extends Piece {
 			cursor-=8;
 			if(ChessPiece.Handyman.isInBound(cursor)==true) {
 				if(color==ChessPiece.Color.BLACK) {
-					if(alloc[cursor]=='.' || Character.isUpperCase(alloc[cursor])==true)
+					if(alloc[cursor]=='.')		moves.add(cursor);
+					else if(Character.isUpperCase(alloc[cursor])==true){
 						moves.add(cursor);
-					else
 						break;
+					}
+					else	break;
 				} else {
-					if(alloc[cursor]=='.' || Character.isLowerCase(alloc[cursor])==true)
+					if(alloc[cursor]=='.')	moves.add(cursor);
+					else if(Character.isLowerCase(alloc[cursor])==true){
 						moves.add(cursor);
+						break;
+					}
 					else
 						break;
 				}
@@ -41,13 +46,18 @@ public class Rook extends Piece {
 			cursor+=8;
 			if(ChessPiece.Handyman.isInBound(cursor)==true) {
 				if(color==ChessPiece.Color.BLACK) {
-					if(alloc[cursor]=='.' || Character.isUpperCase(alloc[cursor])==true)
+					if(alloc[cursor]=='.')		moves.add(cursor);
+					else if(Character.isUpperCase(alloc[cursor])==true){
 						moves.add(cursor);
-					else
 						break;
+					}
+					else	break;
 				} else {
-					if(alloc[cursor]=='.' || Character.isLowerCase(alloc[cursor])==true)
+					if(alloc[cursor]=='.')	moves.add(cursor);
+					else if(Character.isLowerCase(alloc[cursor])==true){
 						moves.add(cursor);
+						break;
+					}
 					else
 						break;
 				}
@@ -63,13 +73,18 @@ public class Rook extends Piece {
 			cursor++;
 			if(ChessPiece.Handyman.isInBound(cursor)==true) {
 				if(color==ChessPiece.Color.BLACK) {
-					if(alloc[cursor]=='.' || Character.isUpperCase(alloc[cursor])==true)
+					if(alloc[cursor]=='.')		moves.add(cursor);
+					else if(Character.isUpperCase(alloc[cursor])==true){
 						moves.add(cursor);
-					else
 						break;
+					}
+					else	break;
 				} else {
-					if(alloc[cursor]=='.' || Character.isLowerCase(alloc[cursor])==true)
+					if(alloc[cursor]=='.')	moves.add(cursor);
+					else if(Character.isLowerCase(alloc[cursor])==true){
 						moves.add(cursor);
+						break;
+					}
 					else
 						break;
 				}
@@ -85,13 +100,18 @@ public class Rook extends Piece {
 			cursor--;
 			if(ChessPiece.Handyman.isInBound(cursor)==true) {
 				if(color==ChessPiece.Color.BLACK) {
-					if(alloc[cursor]=='.' || Character.isUpperCase(alloc[cursor])==true)
+					if(alloc[cursor]=='.')		moves.add(cursor);
+					else if(Character.isUpperCase(alloc[cursor])==true){
 						moves.add(cursor);
-					else
 						break;
+					}
+					else	break;
 				} else {
-					if(alloc[cursor]=='.' || Character.isLowerCase(alloc[cursor])==true)
+					if(alloc[cursor]=='.')	moves.add(cursor);
+					else if(Character.isLowerCase(alloc[cursor])==true){
 						moves.add(cursor);
+						break;
+					}
 					else
 						break;
 				}
