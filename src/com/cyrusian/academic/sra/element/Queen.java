@@ -118,7 +118,7 @@ public class Queen extends Piece {
 						break;
 				}
 				
-				if(cursor%8==0 || cursor<=7)
+				if(cursor<=7)
 					break;
 			} else
 				break;
@@ -140,7 +140,7 @@ public class Queen extends Piece {
 						break;
 				}
 				
-				if(cursor%7==0 || cursor>=56)
+				if(cursor>=56)
 					break;
 			} else
 				break;
@@ -162,7 +162,7 @@ public class Queen extends Piece {
 						break;
 				}
 				
-				if(cursor%7==0 || cursor>=56)
+				if(cursor%7==0)
 					break;
 			} else
 				break;
@@ -184,7 +184,7 @@ public class Queen extends Piece {
 						break;
 				}
 				
-				if(cursor%7==0 || cursor>=56)
+				if(cursor%8==0)
 					break;
 			} else
 				break;
