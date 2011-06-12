@@ -17,14 +17,14 @@ public class Pawn extends Piece {
 		int cursor=where;
 		if(ChessPiece.Color.BLACK==color){
 			if(8<=where && where<=15)
-				if(alloc[cursor+16]==',')	moves.add(cursor+16);
-			if(alloc[cursor+8]==',')		moves.add(cursor+8);
+				if(alloc[cursor+16]=='.')	moves.add(cursor+16);
+			if(alloc[cursor+8]=='.')		moves.add(cursor+8);
 			if(Character.isUpperCase(alloc[cursor+7]))	moves.add(cursor+7);
 			if(Character.isUpperCase(alloc[cursor+9]))	moves.add(cursor+9);
 		}else{
 			if(48<=where && where<=55)
-				if(alloc[cursor-16]==',')	moves.add(cursor-16);
-			if(alloc[cursor-8]==',')		moves.add(cursor-8);
+				if(alloc[cursor-16]=='.')	moves.add(cursor-16);
+			if(alloc[cursor-8]=='.')		moves.add(cursor-8);
 			if(Character.isLowerCase(alloc[cursor-9]))	moves.add(cursor-9);
 			if(Character.isLowerCase(alloc[cursor-7]))	moves.add(cursor-7);
 		}

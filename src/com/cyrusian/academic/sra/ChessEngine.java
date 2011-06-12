@@ -80,9 +80,9 @@ public final class ChessEngine {
 		
 		mainBoard.move(from, to);
 		delegate.updateBoard(mainBoard);
-		isWhitesTurn=false;
+		//isWhitesTurn=false;
 		
-		calculateBestMove();
+		//calculateBestMove();
 	}
 	
 	public ChessBoard getBoard() {
