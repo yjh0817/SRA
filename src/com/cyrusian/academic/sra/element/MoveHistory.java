@@ -3,13 +3,13 @@ package com.cyrusian.academic.sra.element;
 
 public class MoveHistory {
 	
-	private ChessPiece piece;
 	private int from;
+	private int score;
 	private int to;
 	
-	public MoveHistory(ChessPiece p, int f, int t) {
-		piece=p;
+	public MoveHistory(int f, int s, int t) {
 		from=f;
+		score=s;
 		to=t;
 	}
 	
@@ -17,8 +17,8 @@ public class MoveHistory {
 		return from;
 	}
 	
-	public ChessPiece getPiece() {
-		return piece;
+	public int getScore() {
+		return score;
 	}
 	
 	public int getTo() {
