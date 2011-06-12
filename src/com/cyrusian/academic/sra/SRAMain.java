@@ -16,8 +16,8 @@ public final class SRAMain {
 	
 	private SRAMain() {
 		mainWindow = new GUIManager(this);
-		mainWindow.prepare();
 		newGame();
+		mainWindow.prepare(engietan);
 	}
 	
 	private void powerUp() {

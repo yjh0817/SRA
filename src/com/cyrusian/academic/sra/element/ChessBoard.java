@@ -19,14 +19,14 @@ public class ChessBoard implements Cloneable {
 		queens=new Queen[] {new Queen(ChessPiece.Color.WHITE), new Queen(ChessPiece.Color.BLACK)};
 		rooks=new Rook[] {new Rook(ChessPiece.Color.WHITE), new Rook(ChessPiece.Color.BLACK)};
 		allocs=new char[] {
-			'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r',
+			'r', 'n', 'b', 'k', 'q', 'b', 'n', 'r',
 			'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p',
 			'.', '.', '.', '.', '.', '.', '.', '.',
 			'.', '.', '.', '.', '.', '.', '.', '.',
 			'.', '.', '.', '.', '.', '.', '.', '.',
 			'.', '.', '.', '.', '.', '.', '.', '.',
 			'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P',
-			'R', 'N', 'B', 'K', 'Q', 'B', 'N', 'R'
+			'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'
 		};
 	}
 	

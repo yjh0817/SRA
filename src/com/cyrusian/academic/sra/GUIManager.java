@@ -5,7 +5,6 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.util.HashMap;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -23,10 +22,9 @@ public class GUIManager extends JFrame {
 	
 	private JButton[] theGrid;
 	private Internationalization i18n;
-	//private ImageIcon[] boardTiles = {new ImageIcon(getClass().getResource("imageresource/Chess-Brown.png")), new ImageIcon(getClass().getResource("imageresource/Chess-LightBrown.png"))};
-	private HashMap<String, ImageIcon> chessPieces;
 	private int selected;
 	private SRAMain delegate;
+	private ChessEngine engietan;
 	
 	public GUIManager(SRAMain deleg) {
 		super("SRA");
@@ -35,8 +33,9 @@ public class GUIManager extends JFrame {
 		selected=-1;
 	}
 	
-	public void prepare() {
-		setSize(640, 640); // why 900, 688?
+	public GUIManager prepare(ChessEngine engie) {
+		engietan=engie;
+		setSize(640, 640);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setBackground(Color.BLACK);
@@ -51,7 +50,8 @@ public class GUIManager extends JFrame {
 		miNewSingle.setMnemonic(KeyEvent.VK_S);
 		miNewSingle.addActionListener(new MenuListener(MenuType.NEW_SINGLE));
 		menuGame.add(miNewSingle);
-		/*JMenuItem miNewMulti = new JMenuItem(i18n.getString("MenuGameNewMulti"));
+		/*
+		JMenuItem miNewMulti = new JMenuItem(i18n.getString("MenuGameNewMulti"));
 		miNewMulti.setMnemonic(KeyEvent.VK_M);
 		miNewMulti.addActionListener(new MenuListener(MenuType.NEW_MULTI));
 		miNewMulti.setEnabled(false); // not now.
@@ -60,12 +60,13 @@ public class GUIManager extends JFrame {
 		miJoinMulti.setMnemonic(KeyEvent.VK_J);
 		miJoinMulti.addActionListener(new MenuListener(MenuType.NEW_JOIN));
 		miJoinMulti.setEnabled(false); // not now.
-		menuGame.add(miJoinMulti);* /
+		menuGame.add(miJoinMulti);
 		menuGame.addSeparator();
 		JMenuItem miGiveUp = new JMenuItem(i18n.getString("MenuGameGiveUp"));
 		miGiveUp.setMnemonic(KeyEvent.VK_U);
 		miGiveUp.addActionListener(new MenuListener(MenuType.CURRENT_GIVEUP));
-		menuGame.add(miGiveUp);*/
+		menuGame.add(miGiveUp);
+		//*/
 		menuGame.addSeparator();
 		JMenuItem miExit = new JMenuItem(i18n.getString("MenuGameExit"));
 		miExit.setMnemonic(KeyEvent.VK_X);
@@ -101,15 +102,7 @@ public class GUIManager extends JFrame {
 		
 		theGrid = new JButton[64];
 		for(int loopy = 0; loopy < 64; ++loopy) {
-			if(((loopy - (loopy % 8)) / 8) % 2 == 0) {
-				theGrid[loopy] = new JButton();//boardTiles[loopy % 2]);
-				// 이 부분은 1~8번째 "줄" 중 1, 3, 5, 7번째 줄 담당.
-				// 여기 컬러 먹이는 코드 작성
-			} else {
-				theGrid[loopy] = new JButton();//boardTiles[(loopy + 1) % 2]);
-				// 이 부분은 1~8번째 "줄" 중 2, 4, 6, 8번째 줄 담당.
-				// 여기 컬러 먹이는 코드 작성
-			}
+			theGrid[loopy] = new JButton();
 			theGrid[loopy].addActionListener(new MoveListener(loopy));
 			theGrid[loopy].setRolloverEnabled(false);
 			theGrid[loopy].setBorderPainted(false);
@@ -118,8 +111,9 @@ public class GUIManager extends JFrame {
 		}
 		add(playGround);
 		pack(); // to calculate menuBar's height. NEVER USE pack() AGAIN AFTER THIS POINT!
-		this.setSize(640, 640 + menuBar.getHeight());
+		setSize(640, 640 + menuBar.getHeight());
 		
+		return this;
   	}
 	
 	public void updateBoard(ChessBoard currentBoard) {
@@ -158,19 +152,22 @@ public class GUIManager extends JFrame {
 					fileName.append("Empty-");
 					break;
 			}
-			
-			if(ainfo>=65 && ainfo<=90)
+			if(Character.isUpperCase(ainfo)==true)
 				fileName.append("White-");
-			else if(ainfo>=97 && ainfo<=122)
+			else if(Character.isLowerCase(ainfo)==true)
 				fileName.append("Black-");
 			
 			if(((count - (count % 8)) / 8) % 2 == 0)
-				fileName.append(count%2==0?"Even.png":"Odd.png");
+				fileName.append(count%2==0?"Even":"Odd");
 			else
-				fileName.append(count%2==1?"Even.png":"Odd.png");
+				fileName.append(count%2==1?"Even":"Odd");
+			fileName.append(".png");
 			
-			theGrid[count++].setIcon(new ImageIcon(getClass().getResource(fileName.toString())));
+			//System.out.println(getClass().getResource(fileName.toString()).getPath());
+			theGrid[count++].setIcon(new ImageIcon(getClass().getResource(fileName.toString()).getPath()));
+			//count++;
 		}
+		//System.exit(1);
 	}
 	
 	private class MoveListener implements ActionListener {
@@ -184,9 +181,9 @@ public class GUIManager extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent ae) {
 			if(selected == -1)
-				selected = delegate.getEngine().isValid(coord) ? coord : -1;
+				selected = engietan.isWhite(coord) ? coord : -1;
 			else {
-				delegate.getEngine().runEngieRun(selected, coord);
+				engietan.runEngieRun(selected, coord);
 				selected = -1;
 			}
 		}
@@ -205,7 +202,7 @@ public class GUIManager extends JFrame {
 		public void actionPerformed(ActionEvent ae){
 			switch(menuType) {
 				case NEW_SINGLE:
-					delegate.newGame(delegate.getEngine().getDifficulty());
+					delegate.newGame(engietan.getDifficulty());
 					break;
 				case NEW_MULTI:
 					break;
@@ -217,13 +214,13 @@ public class GUIManager extends JFrame {
 					System.exit(0);
 					break;
 				case DIFF_BAS:
-					delegate.getEngine().setDifficulty(ChessEngine.Difficulty.BASIC);
+					engietan.setDifficulty(ChessEngine.Difficulty.BASIC);
 					break;
 				case DIFF_ADV:
-					delegate.getEngine().setDifficulty(ChessEngine.Difficulty.ADVANCED);
+					engietan.setDifficulty(ChessEngine.Difficulty.ADVANCED);
 					break;
 				case DIFF_EXT:
-					delegate.getEngine().setDifficulty(ChessEngine.Difficulty.EXTREME);
+					engietan.setDifficulty(ChessEngine.Difficulty.EXTREME);
 					break;
 				
 			}

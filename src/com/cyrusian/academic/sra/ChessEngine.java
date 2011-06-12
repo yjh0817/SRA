@@ -3,15 +3,6 @@ package com.cyrusian.academic.sra;
 import java.util.Stack;
 import com.cyrusian.academic.sra.element.ChessBoard;
 import com.cyrusian.academic.sra.element.ChessPiece;
-import com.cyrusian.academic.sra.element.Coordinate;
-import com.cyrusian.academic.sra.element.Bishop;
-import com.cyrusian.academic.sra.element.King;
-import com.cyrusian.academic.sra.element.Knight;
-import com.cyrusian.academic.sra.element.MoveHistory;
-import com.cyrusian.academic.sra.element.NullPiece;
-import com.cyrusian.academic.sra.element.Pawn;
-import com.cyrusian.academic.sra.element.Queen;
-import com.cyrusian.academic.sra.element.Rook;
 
 
 public final class ChessEngine {
@@ -19,21 +10,19 @@ public final class ChessEngine {
 	private ChessBoard mainBoard;
 	private GUIManager delegate;
 	private Difficulty difficulty;
-	private Stack<MoveHistory> traceable;
 	
 	public ChessEngine(GUIManager deleg, Difficulty diff) { // specialized on singleplayer
 		delegate = deleg;
 		difficulty = diff;
 		mainBoard = new ChessBoard();
 		delegate.updateBoard(mainBoard);
-		traceable=new Stack<MoveHistory>();
 	}
 	
 	private void calculateBestMove() {//(int levelLimit, int nowLevel) {
 		//
 	}
 	
-	public boolean isValid(int crd) {
+	public boolean isWhite(int crd) {
 		char[] alloc=mainBoard.getAllocation();
 		
 		if(alloc[crd]>=65 && alloc[crd]<=90)
@@ -51,7 +40,7 @@ public final class ChessEngine {
 	}
 	
 	public void runEngieRun(int from, int to) {
-		System.out.println(from+"/"+to);
+		System.out.println(from+"/"+to); //dbg
 		char[] alloc=mainBoard.getAllocation();
 		Integer[] allows;
 		boolean found=false;
@@ -69,13 +58,13 @@ public final class ChessEngine {
 		mainBoard.move(from, to);
 		delegate.updateBoard(mainBoard);
 		
-		calculateBestMove();
+		//calculateBestMove();
 	}
 	
 	public enum Difficulty {
 		BASIC, ADVANCED, EXTREME;
 		
-		public int getValue() {
+		public int getSimulationLevel() {
 			switch(this) {
 				case BASIC:
 					return 3;
