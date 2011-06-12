@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.net.URL;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -116,6 +117,10 @@ public class GUIManager extends JFrame {
 		return this;
   	}
 	
+	public void updateBoard() {
+		updateBoard(engietan.getBoard());
+	}
+	
 	public void updateBoard(ChessBoard currentBoard) {
 		char[] allocation = currentBoard.getAllocation();
 		
@@ -163,11 +168,8 @@ public class GUIManager extends JFrame {
 				fileName.append(count%2==1?"Even":"Odd");
 			fileName.append(".png");
 			
-			//System.out.println(getClass().getResource(fileName.toString()).getPath());
-			theGrid[count++].setIcon(new ImageIcon(getClass().getResource(fileName.toString()).getPath()));
-			//count++;
+			theGrid[count++].setIcon(new ImageIcon(getClass().getResource(fileName.toString())));
 		}
-		//System.exit(1);
 	}
 	
 	private class MoveListener implements ActionListener {

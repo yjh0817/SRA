@@ -15,7 +15,7 @@ public final class ChessEngine {
 		delegate = deleg;
 		difficulty = diff;
 		mainBoard = new ChessBoard();
-		delegate.updateBoard(mainBoard);
+		//delegate.updateBoard(mainBoard);
 	}
 	
 	private void calculateBestMove() {//(int levelLimit, int nowLevel) {
@@ -59,6 +59,10 @@ public final class ChessEngine {
 		delegate.updateBoard(mainBoard);
 		
 		//calculateBestMove();
+	}
+	
+	public ChessBoard getBoard() {
+		return mainBoard;
 	}
 	
 	public enum Difficulty {
